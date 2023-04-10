@@ -8,7 +8,7 @@
     tools:context=".MainActivity" >
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/logoInicio"
         android:layout_width="251dp"
         android:layout_height="207dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,6 +23,7 @@
         android:layout_width="188dp"
         android:layout_height="68dp"
         android:backgroundTint="#FF7104"
+        android:onClick="relatorio"
         android:text="Relatórios"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,6 +37,7 @@
         android:layout_width="188dp"
         android:layout_height="68dp"
         android:backgroundTint="#FF7104"
+        android:onClick="consultar"
         android:text="Consultar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +47,7 @@
         app:layout_constraintVertical_bias="0.668" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/iconCadastro"
         android:layout_width="100dp"
         android:layout_height="67dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -61,7 +63,9 @@
         android:layout_width="188dp"
         android:layout_height="68dp"
         android:backgroundTint="#FF7104"
+        android:onClick="cadastrar"
         android:text="Cadastrar"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -70,7 +74,7 @@
         app:layout_constraintVertical_bias="0.425" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/iconConsultar"
         android:layout_width="109dp"
         android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -82,7 +86,7 @@
         app:srcCompat="@drawable/consultar" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/iconRelatorio"
         android:layout_width="64dp"
         android:layout_height="82dp"
         app:layout_constraintBottom_toBottomOf="parent"
