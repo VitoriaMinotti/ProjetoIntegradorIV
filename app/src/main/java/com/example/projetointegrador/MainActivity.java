@@ -18,14 +18,14 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, Cadastrar.class);
         startActivity(i);
     }
-
-    public void consultar(View v){
-        Intent i = new Intent(this, consultar.class);
-        startActivity(i);
-    }
-
-    public void relatorio(View v){
-        Intent i = new Intent(this, relatorio.class);
-        startActivity(i);
-    }
+//
+//    public void consultar(View v){
+//        Intent i = new Intent(this, consultar.class);
+//        startActivity(i);
+//    }
+//
+//    public void relatorio(View v){
+//        Intent i = new Intent(this, relatorio.class);
+//        startActivity(i);
+//    }
 }
