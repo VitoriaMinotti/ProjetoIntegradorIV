@@ -17,7 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.034"
-        app:srcCompat="@drawable/logosf" />
+        app:srcCompat="@drawable/logosf"
+        android:contentDescription="TODO" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -28,7 +29,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.875"
-        app:srcCompat="@drawable/quadrado" />
+        app:srcCompat="@drawable/quadrado"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/textViewOU"
@@ -92,6 +94,7 @@
         android:ems="10"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.547"
@@ -106,6 +109,7 @@
         android:ems="10"
         android:hint="Senha"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.547"
@@ -117,26 +121,28 @@
         android:id="@+id/imageViewEMAIL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:tint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.533"
-        app:srcCompat="@android:drawable/sym_action_email" />
+        app:srcCompat="@android:drawable/sym_action_email"
+        app:tint="#000000"
+        android:contentDescription="TODO" />
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="26dp"
         android:layout_height="26dp"
-        android:tint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.168"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.632"
-        app:srcCompat="@android:drawable/ic_secure" />
+        app:srcCompat="@android:drawable/ic_secure"
+        app:tint="#000000"
+        android:contentDescription="TODO" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
