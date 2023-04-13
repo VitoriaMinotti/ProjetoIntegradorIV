@@ -9,35 +9,35 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="253dp"
-        android:layout_height="230dp"
+        android:layout_width="289dp"
+        android:layout_height="268dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.034"
-        app:srcCompat="@drawable/logosf"
-        android:contentDescription="TODO" />
+        app:srcCompat="@drawable/logosf" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="339dp"
         android:layout_height="467dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.875"
-        app:srcCompat="@drawable/quadrado"
-        android:contentDescription="TODO" />
+        app:layout_constraintVertical_bias="0.896"
+        app:srcCompat="@drawable/border_rounded_off_white" />
 
     <TextView
         android:id="@+id/textViewOU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="OU"
-        android:textColor="#000000"
+        android:textColor="#3C3B3B"
         android:textSize="14sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,15 +58,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.414" />
+        app:layout_constraintVertical_bias="0.446" />
 
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:backgroundTint="#EF780D"
         android:onClick="login"
         android:text="LOGIN"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -76,11 +77,12 @@
 
     <Button
         android:id="@+id/buttonCadastrarLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:backgroundTint="#EF780D"
         android:onClick="cadastrarLogin"
         android:text="CADASTRAR"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,10 +93,13 @@
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/border_rounded_white"
         android:ems="10"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
+        android:textColor="#040404"
+        android:textColorHint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.547"
@@ -106,10 +111,13 @@
         android:id="@+id/editTextTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/border_rounded_white"
         android:ems="10"
         android:hint="Senha"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:textColor="#040404"
+        android:textColorHint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.547"
@@ -119,30 +127,30 @@
 
     <ImageView
         android:id="@+id/imageViewEMAIL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533"
+        app:layout_constraintVertical_bias="0.522"
         app:srcCompat="@android:drawable/sym_action_email"
-        app:tint="#000000"
-        android:contentDescription="TODO" />
+        app:tint="#000000" />
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.632"
+        app:layout_constraintVertical_bias="0.625"
         app:srcCompat="@android:drawable/ic_secure"
-        app:tint="#000000"
-        android:contentDescription="TODO" />
+        app:tint="#000000" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
