@@ -7,21 +7,10 @@
     android:background="@color/green"
     tools:context=".MainActivity" >
 
-    <ImageView
-        android:id="@+id/logoInicio"
-        android:layout_width="251dp"
-        android:layout_height="207dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/logo" />
-
     <Button
         android:id="@+id/buttonCadastrar"
         android:layout_width="210dp"
-        android:layout_height="152dp"
+        android:layout_height="140dp"
         android:backgroundTint="#FF7104"
         android:onClick="cadastrar"
         android:text="Cadastrar"
@@ -37,12 +26,12 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.357" />
+        app:layout_constraintVertical_bias="0.424" />
 
     <Button
         android:id="@+id/buttonConsultar"
         android:layout_width="210dp"
-        android:layout_height="152dp"
+        android:layout_height="140dp"
         android:backgroundTint="#FF7104"
         android:onClick="consultar"
         android:text="Consultar"
@@ -58,12 +47,12 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.659" />
+        app:layout_constraintVertical_bias="0.69" />
 
     <Button
         android:id="@+id/buttonRelatórios"
         android:layout_width="210dp"
-        android:layout_height="152dp"
+        android:layout_height="140dp"
         android:backgroundTint="#FF7104"
         android:onClick="relatorio"
         android:text="relatorio"
@@ -80,5 +69,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.956" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="298dp"
+        android:layout_height="297dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
