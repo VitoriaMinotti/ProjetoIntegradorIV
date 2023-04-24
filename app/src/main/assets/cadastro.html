@@ -56,6 +56,47 @@
                     <label for="endereco" class="form-label">Endereço:</label>
                     <input type="text" class="form-control" id="endereco" name="endereco">
                 </div>
+                <div class="mb-3">
+                    <label for="numero" class="form-label">Nº:</label>
+                    <input type="text" class="form-control" id="numero" name="numero">
+                </div>
+                <div class="mb-3">
+                    <label for="bairro" class="form-label">Bairro:</label>
+                    <input type="text" class="form-control" id="bairro" name="bairro">
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="condMoradia" id="condMoradiaPropria" value="Propria">
+                    <label class="form-check-label" for="condMoradiaPropria">Casa Própria</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="condMoradia" id="condMoradiaAlugada" value="alugada">
+                    <label class="form-check-label" for="condMoradiaAlugada">Casa Alugada</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="condMoradia" id="condMoradiaOutros" value="outros">
+                    <label class="form-check-label" for="condMoradiaOutros">Outros</label>
+                </div>
+                <div class="mb-3">
+                    <label for="bairro" class="form-label">Profissão do Responsável pela família:</label>
+                    <input type="text" class="form-control" id="profissao" name="profissao">
+                </div>
+
+                <div class="mb-3">
+                    <label for="beneficio" class="form-label">Alguém recebe Auxílio-Brasil?</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="auxilio" id="auxilioSim" value="Sim">
+                        <label class="form-check-label" for="auxilioSim">Sim</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="auxilio" id="auxilioNao" value="Não">
+                        <label class="form-check-label" for="auxilioNao">Não</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="valorAuxilio" class="form-label">Se sim, qual o valor:</label>
+                        <input type="text" class="form-control" id="valorAuxilio" name="valorAuxilio">
+                    </div>
+                </div>
+
         </form>
         </div>
     </div>
