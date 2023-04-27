@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário</title>
+    <title>Cadastro Família</title>
     <!-- Importação do Bootstrap5 -->
     <link rel="stylesheet" href="bootstrap.min.css">
 </head>
@@ -11,56 +11,249 @@
 <div class="container-fluid text-center">
     <div class="row">
         <div class="col-10 offset-1">
-            <h2>Formulário</h2>
+            <br><br>
+            <h1 class="p-5">Cadastrar Nova Família</h1>
             <form>
                 <div class="mb-3">
-                    <label for="responsavel" class="form-label">Responsável pela família:</label>
-                    <input type="text" class="form-control" id="responsavel" name="responsavel">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" onkeyup="handleOnlyLetters(event)" name="responsavel" placeholder="Responsável pela família">
+                        <label for="floatingInput">Responsável pela família</label>
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <label for="aposentadoria" class="form-label">Alguém da família recebe aposentadoria:</label><br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="aposentadoria" id="aposentadoriaSim" value="Sim">
-                        <label class="form-check-label" for="aposentadoriaSim">Sim</label>
+                    <div class="input-group">
+                        <div class="form-floating mb-3">
+                            <input type="tel" class="form-control" id="floatingInput" oninput="mascaraRG(this)" name="rg" placeholder="RG">
+                            <label for="floatingInput">RG</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="tel" class="form-control" id="floatingInput" oninput="mascaraCPF(this)" name="CPF" placeholder="CPF">
+                            <label for="floatingInput">CPF</label>
+                        </div>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="aposentadoria" id="aposentadoriaNao" value="Não">
-                        <label class="form-check-label" for="aposentadoriaNao">Não</label>
+                </div>
+                <div class="mb-3">
+                    <div class="form-floating mb-3">
+                        <input type="tel" class="form-control" id="floatingInput" maxlength="10" onkeyup="handleData(event)" name="dataNascimento"  placeholder="Data Nascimento">
+                        <label for="floatingInput">Data Nascimento</label>
                     </div>
+                </div>
+                <div class="mb-3">
+                    <div class="form-floating mb-3">
+                        <input type="tel" class="form-control" id="floatingInput" maxlength="15" onkeyup="handlePhone(event)" name="celular" placeholder="Celular">
+                        <label for="floatingInput">Celular</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="input-group form-floating mb-3">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" maxlength="50" onkeyup="handleOnlyLetters(event)" name="endrua"  placeholder="Endereço Rua">
+                            <label for="floatingInput">Rua:</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="tel" class="form-control" id="floatingInput" maxlength="10" onkeyup="handleOnlyNumbers(event)" name="endnumero"  placeholder="Endereço Numero">
+                            <label for="floatingInput">Número:</label>
+                        </div>
+                    </div>
+                    <div class="input-group form-floating mb-3 ">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" maxlength="50" onkeyup="handleOnlyLetters(event)" name="endCidade" placeholder="Endereço Cidade">
+                            <label for="floatingInput">Cidade:</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="tel" class="form-control" id="floatingInput" maxlength="9" onkeyup="handleCEP(event)" name="endCEP"  placeholder="Endereço CEP">
+                            <label for="floatingInput">CEP:</label>
+                        </div>
+                    </div>
+                </div>
+                <div class=" form-floating mb-3">
+                    <select class="form-select" id="aposentado" onchange="onSelectAposentado()" >
+                        <option selected value="0"></option>
+                        <option value="1">Sim</option>
+                        <option value="2">Não</option>
+                    </select>
+                    <label for="aposentado">Alguém da família é aposentado?</label>
+                    <br>
                     <div class="mb-3">
-                        <label for="valorAposentadoria" class="form-label">Valor da aposentadoria:</label>
-                        <input type="text" class="form-control" id="valorAposentadoria" name="valorAposentadoria">
+                        <div class="form-floating mb-3">
+                            <input type="text" disabled class="form-control  " id="pessoaRecebeu" name="pessoaRecebeu" onkeyup="handleOnlyLetters(event)" placeholder="Nome do Aposentado:">
+                            <label for="pessoaRecebeu" class=" form-control">Nome do Aposentado:</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="tel" disabled class="form-control " id="valorAposentadoria" name="valorAposentadoria" onkeyup="handleOnlyNumbers(event)" placeholder="Valor da Aposentadoria:">
+                            <label for="valorAposentadoria" class=" form-control">Valor da Aposentadoria:</label>
+                        </div>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="pessoaRecebeu" class="form-label">Pessoa que recebeu:</label>
-                    <input type="text" class="form-control" id="pessoaRecebeu" name="pessoaRecebeu">
+                <div class=" form-floating mb-3">
+                    <select class="form-select" id="moradia" onchange="onSelectMoradia()" >
+                        <option selected value="0"></option>
+                        <option value="1">Casa Própria</option>
+                        <option value="2">Alugada</option>
+                        <option value="3">Outros</option>
+                    </select>
+                    <label for="aposentado">Moradia:</label>
+                    <br>
+                    <div class="mb-3">
+                        <div class="form-floating mb-3">
+                            <input type="text" disabled class="form-control  " id="moradiaAlugada" name="moradiaAlugada" onkeyup="handleOnlyLetters(event)" placeholder="Moradia Alugada:">
+                            <label for="moradiaAlugada" class=" form-control">Valor do Aluguel:</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="tel" disabled class="form-control " id="moradiaOutros" name="moradiaOutros" onkeyup="handleOnlyLetters(event)" placeholder="moradiaOutros:">
+                            <label for="moradiaOutros" class=" form-control">Descrição:</label>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="rg" class="form-label">RG:</label>
-                    <input type="text" class="form-control" id="rg" name="rg">
-                </div>
-                <div class="mb-3">
-                    <label for="cpf" class="form-label">CPF:</label>
-                    <input type="text" class="form-control" id="cpf" name="cpf">
-                </div>
-                <div class="mb-3">
-                    <label for="dataNascimento" class="form-label">Data de Nascimento:</label>
-                    <input type="date" class="form-control" id="dataNascimento" name="dataNascimento">
-                </div>
-                <div class="mb-3">
-                    <label for="telefone" class="form-label">Telefone:</label>
-                    <input type="text" class="form-control" id="telefone" name="telefone">
-                </div>
-                <div class="mb-3">
-                    <label for="endereco" class="form-label">Endereço:</label>
-                    <input type="text" class="form-control" id="endereco" name="endereco">
-                </div>
+
+
+
+
+
+
+                <br><br><br><br><br><br><br><br><br>
+
+
         </form>
         </div>
     </div>
 </div>
 <script src="bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script>
 
+        function mascaraCPF(i){
+            var v = i.value;
+
+            if(isNaN(v[v.length-1])){
+                i.value = v.substring (0, v.length-1);
+                return;
+            }
+            i.setAttribute("maxlength","14");
+            if (v.length == 3 || v.length == 7) i.value += ".";
+            if (v.length == 11) i.value += "-";
+        }
+
+        function mascaraRG(i){
+            var v = i.value;
+
+            if(isNaN(v[v.length-1])){
+                i.value = v.substring (0, v.length-1);
+                return;
+            }
+            i.setAttribute("maxlength","12");
+            if (v.length == 2 || v.length == 6) i.value += ".";
+            if (v.length == 10) i.value += "-";
+        }
+
+        function mascaraDataNasc(i){
+            var v = i.value;
+
+            if(isNaN(v[v.length-1])){
+                i.value = v.substring (0, v.length-1);
+                return;
+            }
+            i.setAttribute("maxlength","10");
+            if (v.length == 2 || v.length == 5) i.value += "/";
+        }
+
+        const handlePhone = (event) => {
+          let input = event.target
+          input.value = phoneMask(input.value)
+        }
+        const phoneMask = (value) => {
+          if (!value) return ""
+          value = value.replace(/\D/g,'')
+          value = value.replace(/(\d{2})(\d)/,"($1) $2")
+          value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+          return value
+        }
+
+        const handleData = (event) => {
+          let input = event.target
+          input.value = maskDate(input.value)
+        }
+        const maskDate = value => {
+          return value
+            .replace(/\D/g, "")
+            .replace(/(\d{2})(\d)/, "$1/$2")
+            .replace(/(\d{2})(\d)/, "$1/$2")
+            .replace(/(\d{4})(\d)/, "$1")
+        }
+
+        const handleOnlyLetters = (event) => {
+          let input = event.target
+          input.value = maskOnlyLetters(input.value)
+        }
+        const maskOnlyLetters = value => {
+          return value.replace(/[0-9!@#¨$%^&*)(+=._-]+/g, "")
+        }
+
+        const handleOnlyNumbers = (event) => {
+          let input = event.target
+          input.value = maskOnlyNumbers(input.value)
+        }
+        const maskOnlyNumbers = value => {
+          return value.replace(/\D/g, "")
+        }
+        const handleCEP = (event) => {
+          let input = event.target
+          input.value = maskCEP(input.value)
+        }
+        const maskCEP = value => {
+          return value.replace(/\D/g, "").replace(/^(\d{5})(\d{3})+?$/, "$1-$2")
+        }
+
+        function onSelectAposentado() {
+          var select = document.getElementById("aposentado");
+          var pessoaRecebeuInput = document.getElementById("pessoaRecebeu");
+          var valorAposentadoriaInput = document.getElementById("valorAposentadoria");
+
+          if (select.value == "1") {
+            pessoaRecebeuInput.disabled = false;
+            valorAposentadoriaInput.disabled = false;
+          } else {
+            pessoaRecebeuInput.disabled = true;
+            valorAposentadoriaInput.disabled = true;
+            pessoaRecebeuInput.value = "";
+            valorAposentadoriaInput.value = "";
+          }
+        }
+        function onSelectMoradia() {
+            var select = document.getElementById("moradia");
+            var moradiaAlugadaInput = document.getElementById("moradiaAlugada");
+            var moradiaOutrosInput = document.getElementById("moradiaOutros");
+
+            if (select.value == "1") {
+                moradiaAlugadaInput.disabled = true;
+                moradiaOutrosInput.disabled = true;
+                moradiaAlugadaInput.style.backgroundColor = "lightgray";
+                moradiaOutrosInput.style.backgroundColor = "lightgray";
+            } else if (select.value == "2") {
+                moradiaAlugadaInput.disabled = false;
+                moradiaOutrosInput.disabled = true;
+                moradiaOutrosInput.value = '';
+                moradiaAlugadaInput.style.backgroundColor = "white";
+                moradiaOutrosInput.style.backgroundColor = "white";
+            } else if (select.value == "3") {
+                moradiaAlugadaInput.disabled = true;
+                moradiaAlugadaInput.value = '';
+                moradiaOutrosInput.disabled = false;
+                moradiaAlugadaInput.style.backgroundColor = "white";
+                moradiaOutrosInput.style.backgroundColor = "white";
+            } else {
+                moradiaAlugadaInput.disabled = true;
+                moradiaOutrosInput.disabled = true;
+                moradiaAlugadaInput.value = '';
+                moradiaOutrosInput.value = '';
+                moradiaAlugadaInput.style.backgroundColor = "white";
+                moradiaOutrosInput.style.backgroundColor = "white";
+            }
+        }
+    </script>
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
 </body>
 </html>
