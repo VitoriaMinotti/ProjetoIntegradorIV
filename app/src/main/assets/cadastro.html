@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-10 offset-1">
             <br><br>
-            <h1 class="p-5">Cadastrar Nova Família</h1>
+            <h1>CADASTRO NOVA FAMÍLIA</h1>
             <form>
                 <div class="mb-3">
                     <div class="form-floating mb-3">
@@ -48,24 +48,52 @@
                     <div class="input-group form-floating mb-3">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="floatingInput" maxlength="50" onkeyup="handleOnlyLetters(event)" name="endrua"  placeholder="Endereço Rua">
-                            <label for="floatingInput">Rua:</label>
+                            <label for="floatingInput">Rua</label>
                         </div>
                         <div class="form-floating mb-3">
                             <input type="tel" class="form-control" id="floatingInput" maxlength="10" onkeyup="handleOnlyNumbers(event)" name="endnumero"  placeholder="Endereço Numero">
-                            <label for="floatingInput">Número:</label>
+                            <label for="floatingInput">Número</label>
                         </div>
                     </div>
                     <div class="input-group form-floating mb-3 ">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="floatingInput" maxlength="50" onkeyup="handleOnlyLetters(event)" name="endCidade" placeholder="Endereço Cidade">
-                            <label for="floatingInput">Cidade:</label>
+                            <label for="floatingInput">Cidade</label>
                         </div>
                         <div class="form-floating mb-3">
                             <input type="tel" class="form-control" id="floatingInput" maxlength="9" onkeyup="handleCEP(event)" name="endCEP"  placeholder="Endereço CEP">
-                            <label for="floatingInput">CEP:</label>
+                            <label for="floatingInput">CEP</label>
                         </div>
                     </div>
                 </div>
+                <div class="mb-3">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" onkeyup="handleOnlyLetters(event)" name="profissao" placeholder="Responsável pela família">
+                        <label for="floatingInput">Profissão do Responsável</label>
+                    </div>
+                </div>
+                <br><hr><br>
+                <div class=" form-floating mb-3">
+                    <select class="form-select is-invalid" id="moradia" onchange="onSelectMoradia()" aria-label="Floating label select example" >
+                        <option selected value="0"></option>
+                        <option value="1">Casa Própria</option>
+                        <option value="2">Alugada</option>
+                        <option value="3">Outros</option>
+                    </select>
+                    <label for="moradia">Situação da Moradia</label>
+                    <br>
+                    <div class="mb-3">
+                        <div class="form-floating mb-3">
+                            <input type="text" disabled class="form-control  " id="moradiaAlugada" name="moradiaAlugada" onkeyup="handleOnlyLetters(event)" placeholder="Moradia Alugada:" aria-label="Floating label select example">
+                            <label for="moradiaAlugada" >Valor do Aluguel</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="tel" disabled class="form-control  " id="moradiaOutros" name="moradiaOutros" onkeyup="handleOnlyLetters(event)" placeholder="moradiaOutros:" aria-label="Floating label select example">
+                            <label for="moradiaOutros">Descrição</label>
+                        </div>
+                    </div>
+                </div>
+                <br><hr><br>
                 <div class=" form-floating mb-3">
                     <select class="form-select" id="aposentado" onchange="onSelectAposentado()" >
                         <option selected value="0"></option>
@@ -77,34 +105,91 @@
                     <div class="mb-3">
                         <div class="form-floating mb-3">
                             <input type="text" disabled class="form-control  " id="pessoaRecebeu" name="pessoaRecebeu" onkeyup="handleOnlyLetters(event)" placeholder="Nome do Aposentado:">
-                            <label for="pessoaRecebeu" class=" form-control">Nome do Aposentado:</label>
+                            <label for="pessoaRecebeu">Nome do Aposentado</label>
                         </div>
                         <div class="form-floating mb-3">
                             <input type="tel" disabled class="form-control " id="valorAposentadoria" name="valorAposentadoria" onkeyup="handleOnlyNumbers(event)" placeholder="Valor da Aposentadoria:">
-                            <label for="valorAposentadoria" class=" form-control">Valor da Aposentadoria:</label>
+                            <label for="valorAposentadoria">Valor da Aposentadoria</label>
                         </div>
                     </div>
                 </div>
+                <br><hr><br>
                 <div class=" form-floating mb-3">
-                    <select class="form-select" id="moradia" onchange="onSelectMoradia()" >
+                    <select class="form-select" id="auxilio" onchange="onSelectAuxilio()" >
                         <option selected value="0"></option>
-                        <option value="1">Casa Própria</option>
-                        <option value="2">Alugada</option>
-                        <option value="3">Outros</option>
+                        <option value="1">Sim</option>
+                        <option value="2">Não</option>
                     </select>
-                    <label for="aposentado">Moradia:</label>
+                    <label for="auxilio">Alguém da família recebe auxílio Brasil?</label>
                     <br>
                     <div class="mb-3">
                         <div class="form-floating mb-3">
-                            <input type="text" disabled class="form-control  " id="moradiaAlugada" name="moradiaAlugada" onkeyup="handleOnlyLetters(event)" placeholder="Moradia Alugada:">
-                            <label for="moradiaAlugada" class=" form-control">Valor do Aluguel:</label>
+                            <input type="text" disabled class="form-control  " id="pessoaAuxilio" name="pessoaAuxilio" onkeyup="handleOnlyLetters(event)" placeholder="Nome do Aposentado:">
+                            <label for="pessoaAuxilio">Nome de Beneficiário</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="tel" disabled class="form-control " id="moradiaOutros" name="moradiaOutros" onkeyup="handleOnlyLetters(event)" placeholder="moradiaOutros:">
-                            <label for="moradiaOutros" class=" form-control">Descrição:</label>
+                            <input type="tel" disabled class="form-control " id="valorAuxilio" name="valorAuxilio" onkeyup="handleOnlyNumbers(event)" placeholder="Valor da Aposentadoria:">
+                            <label for="valorAuxilio">Valor do Auxílio</label>
                         </div>
                     </div>
                 </div>
+                <br><hr><br>
+                <div class="mb-3">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <h2>INTEGRANTES DA FAMÍLIA</h2>
+                            <thead>
+                            <tr>
+                                <th>NOME</th>
+                                <th>PARENTESCO</th>
+                                <th>IDADE</th>
+                                <th>PROFISSÃO</th>
+                                <th>POSSUI RENDA</th>
+                                <th>PcD</th>
+                                <th><button type="button" class="btn btn-info btn-sm" onclick="addRow()">+</button></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><input type="text" class="form-control" name="nome[]" required></td>
+                                <td><input type="text" class="form-control" name="parentesco[]" required></td>
+                                <td><input type="tel" class="form-control" name="idade[]" required></td>
+                                <td><input type="text" class="form-control" name="profissao[]" required></td>
+                                <td><button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)">OK</button></td>
+
+                                <td>
+                                    <select class="form-select" name="possui_renda[]">
+                                        <option value="1">Sim</option>
+                                        <option selected value="0">Não</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="form-select" name="pcd[]">
+                                        <option value="1">Sim</option>
+                                        <option selected value="0">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-end">
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
 
 
 
@@ -120,6 +205,31 @@
 </div>
 <script src="bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script>
+        function addRow() {
+          var table = document.querySelector("table tbody");
+          var newRow = table.insertRow();
+          var cols = "";
+
+          cols += '<td><input type="text" class="form-control" name="nome[]" required></td>';
+          cols += '<td><input type="text" class="form-control" name="parentesco[]" required></td>';
+          cols += '<td><input type="tel" class="form-control" name="idade[]" required></td>';
+          cols += '<td><input type="text" class="form-control" name="profissao[]" required></td>';
+          cols += '<td><select class="form-select" name="possui_renda[]"><option value="1">Sim</option><option selected value="0">Não</option></select></td>';
+          cols += '<td><select class="form-select" name="pcd[]"><option value="1">Sim</option><option selected value="0">Não</option></select></td>';
+          cols += '<td><button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)">X</button></td>';
+
+          newRow.innerHTML = cols;
+        }
+        function removeRow(btn) {
+          var row = btn.parentNode.parentNode;
+          row.parentNode.removeChild(row);
+        }
+        function saveRow(btn) {
+          var row = btn.parentNode.parentNode;
+          row.parentNode.removeChild(row);
+        }
+
+
 
         function mascaraCPF(i){
             var v = i.value;
@@ -218,6 +328,21 @@
             valorAposentadoriaInput.value = "";
           }
         }
+        function onSelectAuxilio() {
+          var select = document.getElementById("auxilio");
+          var pessoaAuxilioInput = document.getElementById("pessoaAuxilio");
+          var valorAuxilioInput = document.getElementById("valorAuxilio");
+
+          if (select.value == "1") {
+            pessoaAuxilioInput.disabled = false;
+            valorAuxilioInput.disabled = false;
+          } else {
+            pessoaAuxilioInput.disabled = true;
+            valorAuxilioInput.disabled = true;
+            pessoaAuxilioInput.value = "";
+            valorAuxilioInput.value = "";
+          }
+        }
         function onSelectMoradia() {
             var select = document.getElementById("moradia");
             var moradiaAlugadaInput = document.getElementById("moradiaAlugada");
@@ -226,34 +351,21 @@
             if (select.value == "1") {
                 moradiaAlugadaInput.disabled = true;
                 moradiaOutrosInput.disabled = true;
-                moradiaAlugadaInput.style.backgroundColor = "lightgray";
-                moradiaOutrosInput.style.backgroundColor = "lightgray";
             } else if (select.value == "2") {
                 moradiaAlugadaInput.disabled = false;
                 moradiaOutrosInput.disabled = true;
                 moradiaOutrosInput.value = '';
-                moradiaAlugadaInput.style.backgroundColor = "white";
-                moradiaOutrosInput.style.backgroundColor = "white";
             } else if (select.value == "3") {
                 moradiaAlugadaInput.disabled = true;
                 moradiaAlugadaInput.value = '';
                 moradiaOutrosInput.disabled = false;
-                moradiaAlugadaInput.style.backgroundColor = "white";
-                moradiaOutrosInput.style.backgroundColor = "white";
             } else {
                 moradiaAlugadaInput.disabled = true;
                 moradiaOutrosInput.disabled = true;
                 moradiaAlugadaInput.value = '';
                 moradiaOutrosInput.value = '';
-                moradiaAlugadaInput.style.backgroundColor = "white";
-                moradiaOutrosInput.style.backgroundColor = "white";
             }
         }
     </script>
-    <style>
-      .hidden {
-        display: none;
-      }
-    </style>
 </body>
 </html>
