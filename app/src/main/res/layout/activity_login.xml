@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/degrade"
+    android:background="@color/green"
     tools:context=".Login">
 
     <ImageView
@@ -22,8 +22,8 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="339dp"
-        android:layout_height="467dp"
+        android:layout_width="319dp"
+        android:layout_height="457dp"
         android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,6 +68,7 @@
         android:onClick="login"
         android:text="LOGIN"
         android:textColor="#FFFFFF"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -83,6 +84,7 @@
         android:onClick="cadastrarLogin"
         android:text="CADASTRAR"
         android:textColor="#FFFFFF"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
