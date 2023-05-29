@@ -22,6 +22,8 @@
                       <th>IDADE</th>
                       <th>PROFISSÃO</th>
                       <th>POSSUI RENDA</th>
+                      <th>É APOSENTADO</th>
+                      <th>RECEBE AUXILIO BRASIL</th>
                       <th>PcD</th>
                       <th><button type="button" class="btn btn-info btn-sm" onclick="addRow()">+</button></th>
                   </tr>
@@ -35,6 +37,18 @@
                       
                       <td>
                           <select class="form-select" name="possui_renda[]">
+                              <option value="1">Sim</option>
+                              <option selected value="0">Não</option>
+                          </select>
+                      </td>
+                      <td>
+                          <select class="form-select" name="recebe_aposentadoria[]">
+                              <option value="1">Sim</option>
+                              <option selected value="0">Não</option>
+                          </select>
+                      </td>
+                      <td>
+                          <select class="form-select" name="recebe_auxilio[]">
                               <option value="1">Sim</option>
                               <option selected value="0">Não</option>
                           </select>
@@ -87,10 +101,48 @@
                           <option value="2">Não</option>
                       </select>
                       <label for="aposentado">Possui renda?</label>
-                      <br>
                       <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
                     </div>
                   </div>
+                    <br><hr><br>
+                    <div class=" form-floating mb-3">
+                        <select class="form-select" required id="aposentado" onchange="onSelectAposentado()" >
+                            <option selected value="0"></option>
+                            <option value="1">Sim</option>
+                            <option value="2">Não</option>
+                        </select>
+                        <label for="aposentado">É aposentado?</label>
+                        <br>
+                        <div class="mb-3">
+                            <div class="form-floating mb-3">
+                                <input type="tel" disabled required class="form-control " id="valorAposentadoria" name="valorAposentadoria" onkeyup="handleOnlyNumbers(event); validateField(this);" placeholder="Valor da Aposentadoria:">
+                                <label for="valorAposentadoria">Valor da Aposentadoria</label>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
+                    </div>
+                    <br><hr><br>
+                    <div class=" form-floating mb-3">
+                        <select class="form-select" required id="auxilio" onchange="onSelectAuxilio()" >
+                            <option selected value="0"></option>
+                            <option value="1">Sim</option>
+                            <option value="2">Não</option>
+                        </select>
+                        <label for="auxilio">Recebe Auxílio Brasil?</label>
+                        <br>
+                        <div class="mb-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" disabled required class="form-control  " id="pessoaAuxilio" name="pessoaAuxilio" onkeyup="handleOnlyLetters(event); validateField(this); " placeholder="Nome do Aposentado:">
+                                <label for="pessoaAuxilio">Nome de Beneficiário</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="tel" disabled required class="form-control " id="valorAuxilio" name="valorAuxilio" onkeyup="handleOnlyNumbers(event); validateField(this);" placeholder="Valor da Aposentadoria:">
+                                <label for="valorAuxilio">Valor do Auxílio</label>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
+                    </div>
+                    <br><hr><br>
                   <div class="col-md-2">
                     <div class=" form-floating mb-3">
                       <select class="form-select" required id="pcd[]" >

@@ -82,7 +82,10 @@ function addRow() {
   cols += '<td><input type="text" class="form-control" name="profissao[]" required></td>';
   cols += '<td><select class="form-select" name="possui_renda[]"><option value="1">Sim</option><option selected value="0">Não</option></select></td>';
   cols += '<td><select class="form-select" name="pcd[]"><option value="1">Sim</option><option selected value="0">Não</option></select></td>';
+  cols += '<td><select class="form-select" name="recebe_aposentadoria[]"><option value="1">Sim</option><option selected value="0">Não</option></select></td>';
+  cols += '<td><select class="form-select" name="recebe_auxilio[]"><option value="1">Sim</option><option selected value="0">Não</option></select></td>';
   cols += '<td><button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)">X</button></td>';
+
 
   newRow.innerHTML = cols;
 }
@@ -135,7 +138,6 @@ function addCol() {
             <option value="2">Não</option>
         </select>
         <label for="aposentado">Possui renda?</label>
-        <br>
         <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
       </div>
     </div>
@@ -146,6 +148,31 @@ function addCol() {
             <option value="1">Sim</option>
             <option value="2">Não</option>
         </select>
+
+        <label for="aposentado">É Aposentado?</label>
+                <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
+            </div>
+            </div>
+            <div class="col-md-2">
+            <div class=" form-floating mb-3">
+        <select class="form-select" required id="pcd[]" >
+            <option selected value="0"></option>
+            <option value="1">Sim</option>
+            <option value="2">Não</option>
+        </select>
+
+       <label for="aposentado">Recebe Auxílio Brasil?</label>
+                <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
+            </div>
+            </div>
+            <div class="col-md-2">
+            <div class=" form-floating mb-3">
+        <select class="form-select" required id="pcd[]" >
+            <option selected value="0"></option>
+            <option value="1">Sim</option>
+            <option value="2">Não</option>
+        </select>
+
         <label for="aposentado">PcD?</label>
         <br>
         <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
