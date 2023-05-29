@@ -12,6 +12,9 @@
         android:theme="@style/Theme.ProjetoIntegrador"
         tools:targetApi="31">
         <activity
+            android:name=".cadastrarUsuario"
+            android:exported="false" />
+        <activity
             android:name=".Cadastrar"
             android:exported="false" />
         <activity

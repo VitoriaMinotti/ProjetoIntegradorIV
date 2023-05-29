@@ -1,75 +1,75 @@
-    window.scrollTo(0, 0);
+window.scrollTo(0, 0);
 
 function validaRG(rg) {
-    var rgFormatado = rg.replace(/[^0-9]/g, ''); // Remove caracteres que não são números
-    if (rgFormatado.length != 9) {
-        return false;
-    }
-    var digitos = rgFormatado.split('');
-    var soma = (digitos[0] * 2) + (digitos[1] * 3) + (digitos[2] * 4) + (digitos[3] * 5) + (digitos[4] * 6) + (digitos[5] * 7) + (digitos[6] * 8) + (digitos[7] * 9);
-    var resto = soma % 11;
-    var digitoVerificador = 0;
-    if (resto != 0) {
-        digitoVerificador = 11 - resto;
-    }
-    if (digitoVerificador != digitos[8]) {
-        return false;
-    }
-    return true;
+  var rgFormatado = rg.replace(/[^0-9]/g, ''); // Remove caracteres que não são números
+  if (rgFormatado.length != 9) {
+    return false;
+  }
+  var digitos = rgFormatado.split('');
+  var soma = (digitos[0] * 2) + (digitos[1] * 3) + (digitos[2] * 4) + (digitos[3] * 5) + (digitos[4] * 6) + (digitos[5] * 7) + (digitos[6] * 8) + (digitos[7] * 9);
+  var resto = soma % 11;
+  var digitoVerificador = 0;
+  if (resto != 0) {
+    digitoVerificador = 11 - resto;
+  }
+  if (digitoVerificador != digitos[8]) {
+    return false;
+  }
+  return true;
 }
 function validaRG(rg) {
-    var rgFormatado = rg.replace(/[^0-9]/g, ''); // Remove caracteres que não são números
-    if (rgFormatado.length != 9) {
-        return false;
-    }
-    var digitos = rgFormatado.split('');
-    var soma = (digitos[0] * 2) + (digitos[1] * 3) + (digitos[2] * 4) + (digitos[3] * 5) + (digitos[4] * 6) + (digitos[5] * 7) + (digitos[6] * 8) + (digitos[7] * 9);
-    var resto = soma % 11;
-    var digitoVerificador = 0;
-    if (resto != 0) {
-        digitoVerificador = 11 - resto;
-    }
-    if (digitoVerificador != digitos[8]) {
-        return false;
-    }
-    return true;
+  var rgFormatado = rg.replace(/[^0-9]/g, ''); // Remove caracteres que não são números
+  if (rgFormatado.length != 9) {
+    return false;
+  }
+  var digitos = rgFormatado.split('');
+  var soma = (digitos[0] * 2) + (digitos[1] * 3) + (digitos[2] * 4) + (digitos[3] * 5) + (digitos[4] * 6) + (digitos[5] * 7) + (digitos[6] * 8) + (digitos[7] * 9);
+  var resto = soma % 11;
+  var digitoVerificador = 0;
+  if (resto != 0) {
+    digitoVerificador = 11 - resto;
+  }
+  if (digitoVerificador != digitos[8]) {
+    return false;
+  }
+  return true;
 }
 //função para validar a data de nascimento
 function validarDataNascimento(dataNascimento) {
-//verificar se a data de nascimento está no formato correto (DD/MM/AAAA)
-if (!/\d{2}\/\d{2}\/\d{4}/.test(dataNascimento)) {
+  //verificar se a data de nascimento está no formato correto (DD/MM/AAAA)
+  if (!/\d{2}\/\d{2}\/\d{4}/.test(dataNascimento)) {
     return false;
-}
+  }
 
-//obter os valores do dia, mês e ano da data de nascimento
-var partesData = dataNascimento.split('/');
-var dia = parseInt(partesData[0], 10);
-var mes = parseInt(partesData[1], 10);
-var ano = parseInt(partesData[2], 10);
+  //obter os valores do dia, mês e ano da data de nascimento
+  var partesData = dataNascimento.split('/');
+  var dia = parseInt(partesData[0], 10);
+  var mes = parseInt(partesData[1], 10);
+  var ano = parseInt(partesData[2], 10);
 
-//verificar se a data é válida
-var data = new Date(ano, mes - 1, dia);
-if (data.getFullYear() !== ano || data.getMonth() + 1 !== mes || data.getDate() !== dia) {
+  //verificar se a data é válida
+  var data = new Date(ano, mes - 1, dia);
+  if (data.getFullYear() !== ano || data.getMonth() + 1 !== mes || data.getDate() !== dia) {
     return false;
-}
+  }
 
-//verificar se o usuário tem pelo menos 18 anos de idade
-var idade = new Date().getFullYear() - ano;
-if (idade < 18) {
+  //verificar se o usuário tem pelo menos 18 anos de idade
+  var idade = new Date().getFullYear() - ano;
+  if (idade < 18) {
     return false;
-}
+  }
 
-//se chegou até aqui, a data de nascimento é válida
-return true;
+  //se chegou até aqui, a data de nascimento é válida
+  return true;
 }
 
 
 function validateField(field) {
-    if (field.checkValidity()) {
-        field.classList.remove("is-invalid");
-    } else {
-        field.classList.add("is-invalid");
-    }
+  if (field.checkValidity()) {
+    field.classList.remove("is-invalid");
+  } else {
+    field.classList.add("is-invalid");
+  }
 }
 function addRow() {
   var table = document.querySelector("table tbody");
@@ -98,9 +98,9 @@ function saveRow(btn) {
   row.parentNode.removeChild(row);
 }
 function addCol() {
-    const container = document.createElement('div');
-    container.className = 'row d-sm-block d-md-none animate__animated animate__fadeIn';
-    container.innerHTML = `
+  const container = document.createElement('div');
+  container.className = 'row d-sm-block d-md-none animate__animated animate__fadeIn';
+  container.innerHTML = `
     <div class="alert alert-secondary">
     <div class="col-md-2">
       <div class="form-floating mb-3">
@@ -193,7 +193,7 @@ function addCol() {
     <hr>
 </div>
 </div>`;
-    
+
   const addButton = document.querySelector('.container.text-center button');
   addButton.parentElement.parentElement.parentElement.insertBefore(container, addButton.parentElement.parentElement.nextSibling);
 }
@@ -206,44 +206,39 @@ function removeCol() {
 }
 
 
+function mascaraCPF(i) {
+  var v = i.value;
 
-
-  
-
-
-function mascaraCPF(i){
-    var v = i.value;
-
-    if(isNaN(v[v.length-1])){
-        i.value = v.substring (0, v.length-1);
-        return;
-    }
-    i.setAttribute("maxlength","14");
-    if (v.length == 3 || v.length == 7) i.value += ".";
-    if (v.length == 11) i.value += "-";
+  if (isNaN(v[v.length - 1])) {
+    i.value = v.substring(0, v.length - 1);
+    return;
+  }
+  i.setAttribute("maxlength", "14");
+  if (v.length == 3 || v.length == 7) i.value += ".";
+  if (v.length == 11) i.value += "-";
 }
 
-function mascaraRG(i){
-    var v = i.value;
+function mascaraRG(i) {
+  var v = i.value;
 
-    if(isNaN(v[v.length-1])){
-        i.value = v.substring (0, v.length-1);
-        return;
-    }
-    i.setAttribute("maxlength","12");
-    if (v.length == 2 || v.length == 6) i.value += ".";
-    if (v.length == 10) i.value += "-";
+  if (isNaN(v[v.length - 1])) {
+    i.value = v.substring(0, v.length - 1);
+    return;
+  }
+  i.setAttribute("maxlength", "12");
+  if (v.length == 2 || v.length == 6) i.value += ".";
+  if (v.length == 10) i.value += "-";
 }
 
-function mascaraDataNasc(i){
-    var v = i.value;
+function mascaraDataNasc(i) {
+  var v = i.value;
 
-    if(isNaN(v[v.length-1])){
-        i.value = v.substring (0, v.length-1);
-        return;
-    }
-    i.setAttribute("maxlength","10");
-    if (v.length == 2 || v.length == 5) i.value += "/";
+  if (isNaN(v[v.length - 1])) {
+    i.value = v.substring(0, v.length - 1);
+    return;
+  }
+  i.setAttribute("maxlength", "10");
+  if (v.length == 2 || v.length == 5) i.value += "/";
 }
 
 const handlePhone = (event) => {
@@ -252,9 +247,9 @@ const handlePhone = (event) => {
 }
 const phoneMask = (value) => {
   if (!value) return ""
-  value = value.replace(/\D/g,'')
-  value = value.replace(/(\d{2})(\d)/,"($1) $2")
-  value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+  value = value.replace(/\D/g, '')
+  value = value.replace(/(\d{2})(\d)/, "($1) $2")
+  value = value.replace(/(\d)(\d{4})$/, "$1-$2")
   return value
 }
 
@@ -295,54 +290,49 @@ const maskCEP = value => {
 
 function onSelectAposentado() {
   var select = document.getElementById("aposentado");
-  var pessoaRecebeuInput = document.getElementById("pessoaRecebeu");
   var valorAposentadoriaInput = document.getElementById("valorAposentadoria");
 
   if (select.value == "1") {
-    pessoaRecebeuInput.disabled = false;
     valorAposentadoriaInput.disabled = false;
   } else {
-    pessoaRecebeuInput.disabled = true;
     valorAposentadoriaInput.disabled = true;
-    pessoaRecebeuInput.value = "";
     valorAposentadoriaInput.value = "";
   }
 }
+
+
 function onSelectAuxilio() {
   var select = document.getElementById("auxilio");
-  var pessoaAuxilioInput = document.getElementById("pessoaAuxilio");
   var valorAuxilioInput = document.getElementById("valorAuxilio");
 
   if (select.value == "1") {
-    pessoaAuxilioInput.disabled = false;
     valorAuxilioInput.disabled = false;
   } else {
-    pessoaAuxilioInput.disabled = true;
     valorAuxilioInput.disabled = true;
-    pessoaAuxilioInput.value = "";
     valorAuxilioInput.value = "";
   }
 }
-function onSelectMoradia() {
-    var select = document.getElementById("moradia");
-    var moradiaAlugadaInput = document.getElementById("moradiaAlugada");
-    var moradiaOutrosInput = document.getElementById("moradiaOutros");
 
-    if (select.value == "1") {
-        moradiaAlugadaInput.disabled = true;
-        moradiaOutrosInput.disabled = true;
-    } else if (select.value == "2") {
-        moradiaAlugadaInput.disabled = false;
-        moradiaOutrosInput.disabled = true;
-        moradiaOutrosInput.value = '';
-    } else if (select.value == "3") {
-        moradiaAlugadaInput.disabled = true;
-        moradiaAlugadaInput.value = '';
-        moradiaOutrosInput.disabled = false;
-    } else {
-        moradiaAlugadaInput.disabled = true;
-        moradiaOutrosInput.disabled = true;
-        moradiaAlugadaInput.value = '';
-        moradiaOutrosInput.value = '';
-    }
+function onSelectMoradia() {
+  var select = document.getElementById("moradia");
+  var moradiaAlugadaInput = document.getElementById("moradiaAlugada");
+  var moradiaOutrosInput = document.getElementById("moradiaOutros");
+
+  if (select.value == "1") {
+    moradiaAlugadaInput.disabled = true;
+    moradiaOutrosInput.disabled = true;
+  } else if (select.value == "2") {
+    moradiaAlugadaInput.disabled = false;
+    moradiaOutrosInput.disabled = true;
+    moradiaOutrosInput.value = '';
+  } else if (select.value == "3") {
+    moradiaAlugadaInput.disabled = true;
+    moradiaAlugadaInput.value = '';
+    moradiaOutrosInput.disabled = false;
+  } else {
+    moradiaAlugadaInput.disabled = true;
+    moradiaOutrosInput.disabled = true;
+    moradiaAlugadaInput.value = '';
+    moradiaOutrosInput.value = '';
+  }
 }
