@@ -1,153 +1,166 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro Família</title>
-  <link rel="stylesheet" href="bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Família</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
 </head>
-
 <body style="background-color: #CBD7CD;">
-  <div class="container-fluid text-center">
-    <div class="row">
-      <div class="col-12 col-md-6 offset-md-3 mx-auto">
-        <br><br>
-        <h1>CADASTRO NOVA FAMÍLIA</h1><br>
-        <form action="cadastro_integrantes.html" method="get">
-          <div class="mb-3">
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" required id="floatingInput"
-                onkeyup="handleOnlyLetters(event); validateField(this); " name="responsavel"
-                placeholder="Responsável pela família">
-              <label for="floatingInput">Responsável pela família</label>
-              <div class="invalid-feedback">Por favor, preencha este campo.</div>
+    <div class="container-fluid text-center">
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3 mx-auto">
+                <br><br><h1>CADASTRO NOVA FAMÍLIA</h1><br>
+                <form action="cadastro_integrantes.html" method="get">
+                    <div class="mb-3">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" required id="floatingInput" onkeyup="handleOnlyLetters(event); validateField(this); " name="responsavel" placeholder="Responsável pela família">
+                            <label for="floatingInput">Responsável pela família</label>
+                            <div class="invalid-feedback">Por favor, preencha este campo.</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control" required id="floatingInput" oninput="mascaraRG(this); validateField(this); validaRG(this);" name="rg" placeholder="RG">
+                                <label for="floatingInput">RG</label>
+                                <div class="invalid-feedback">Por favor, preencha este campo com um RG válido.</div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control" required id="floatingInput" oninput="mascaraCPF(this); validateField(this); validaCPF(this);" name="CPF" placeholder="CPF">
+                                <label for="floatingInput">CPF</label>
+                                <div class="invalid-feedback">Por favor, preencha este campo com um CPF válido.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control" required id="floatingInput" maxlength="10" onkeyup="handleData(event); validateField(this); validarDataNascimento(this);" name="dataNascimento"  placeholder="Data Nascimento">
+                                <label for="floatingInput">Data Nascimento</label> 
+                                <div class="invalid-feedback">Por favor, preencha este campo com uma data válida.</div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control" required id="floatingInput" maxlength="15" onkeyup="handlePhone(event); validateField(this);" name="celular" placeholder="Celular">
+                                <label for="floatingInput">Celular</label>
+                                <div class="invalid-feedback">Por favor, preencha este campo com um telefone válido.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="input-group form-floating mb-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" required id="floatingInput" maxlength="50" onkeyup="handleOnlyLetters(event); validateField(this);" name="endrua"  placeholder="Endereço Rua">
+                                <label for="floatingInput">Rua</label>
+                                <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control" required id="floatingInput" maxlength="10" onkeyup="handleOnlyNumbers(event); validateField(this);" name="endnumero"  placeholder="Endereço Numero">
+                                <label for="floatingInput">Número</label>
+                                <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
+                            </div>
+                        </div>
+                        <div class="input-group form-floating mb-3 ">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" required id="floatingInput" maxlength="50" onkeyup="handleOnlyLetters(event); validateField(this);" name="endCidade" placeholder="Endereço Cidade">
+                                <label for="floatingInput">Cidade</label>
+                                <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control" required id="floatingInput" maxlength="9" onkeyup="handleCEP(event); validateField(this);" name="endCEP"  placeholder="Endereço CEP">
+                                <label for="floatingInput">CEP</label>
+                                <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" required id="floatingInput" onkeyup="handleOnlyLetters(event); validateField(this);" name="profissao" placeholder="Responsável pela família">
+                            <label for="floatingInput">Profissão do Responsável</label>
+                            <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
+                        </div>
+                    </div>
+                    <br><hr><br>
+                    <div class=" form-floating mb-3">
+                        <select class="form-select" required id="moradia" onchange="onSelectMoradia(); validateField(this);" aria-label="Floating label select example" >
+                            <option selected value="0"></option>
+                            <option value="1">Casa Própria</option>
+                            <option value="2">Alugada</option>
+                            <option value="3">Outros</option>
+                        </select>
+                        <label for="moradia">Situação da Moradia</label>
+                        <br>
+                        <div class="mb-3">
+                            <div class="form-floating mb-3">
+                                <input type="tel" disabled required class="form-control  " id="moradiaAlugada" name="moradiaAlugada" onkeyup="handleOnlyNumbers(event); validateField(this);" placeholder="Moradia Alugada:" aria-label="Floating label select example">
+                                <label for="moradiaAlugada" >Valor do Aluguel</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" disabled required class="form-control  " id="moradiaOutros" name="moradiaOutros" onkeyup="handleOnlyLetters(event); validateField(this);" placeholder="moradiaOutros:" aria-label="Floating label select example">
+                                <label for="moradiaOutros">Descrição</label>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
+                    </div>
+                    <br><hr><br>
+                    <div class=" form-floating mb-3">
+                        <select class="form-select" required id="aposentado" onchange="onSelectAposentado()" >
+                            <option selected value="0"></option>
+                            <option value="1">Sim</option>
+                            <option value="2">Não</option>
+                        </select>
+                        <label for="aposentado">Alguém da família é aposentado?</label>
+                        <br>
+                        <div class="mb-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" disabled required class="form-control  " id="pessoaRecebeu" name="pessoaRecebeu" onkeyup="handleOnlyLetters(event); validateField(this);" placeholder="Nome do Aposentado:">
+                                <label for="pessoaRecebeu">Nome do Aposentado</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="tel" disabled required class="form-control " id="valorAposentadoria" name="valorAposentadoria" onkeyup="handleOnlyNumbers(event); validateField(this);" placeholder="Valor da Aposentadoria:">
+                                <label for="valorAposentadoria">Valor da Aposentadoria</label>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
+                    </div>
+                    <br><hr><br>
+                    <div class=" form-floating mb-3">
+                        <select class="form-select" required id="auxilio" onchange="onSelectAuxilio()" >
+                            <option selected value="0"></option>
+                            <option value="1">Sim</option>
+                            <option value="2">Não</option>
+                        </select>
+                        <label for="auxilio">Alguém da família recebe auxílio Brasil?</label>
+                        <br>
+                        <div class="mb-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" disabled required class="form-control  " id="pessoaAuxilio" name="pessoaAuxilio" onkeyup="handleOnlyLetters(event); validateField(this); " placeholder="Nome do Aposentado:">
+                                <label for="pessoaAuxilio">Nome de Beneficiário</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="tel" disabled required class="form-control " id="valorAuxilio" name="valorAuxilio" onkeyup="handleOnlyNumbers(event); validateField(this);" placeholder="Valor da Aposentadoria:">
+                                <label for="valorAuxilio">Valor do Auxílio</label>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
+                    </div>
+                    <br><hr>
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col align-self-start"></div>
+                            <div class="col align-self-center"></div>
+                            <div class="col align-self-end">
+                                <button type="submit" class="btn btn-primary">PRÓXIMO</button>
+                                <a href="cadastro_integrantes.html">PROXIMO</a>
+                            </div>
+                        </div>
+                    </div>                             
+                    <br>
+                </form>
             </div>
-          </div>
-          <div class="mb-3">
-            <div class="input-group">
-              <div class="form-floating mb-3">
-                <input type="tel" class="form-control" required id="floatingInput"
-                  oninput="mascaraRG(this); validateField(this); validaRG(this);" name="rg" placeholder="RG">
-                <label for="floatingInput">RG</label>
-                <div class="invalid-feedback">Por favor, preencha este campo com um RG válido.</div>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="tel" class="form-control" required id="floatingInput"
-                  oninput="mascaraCPF(this); validateField(this); validaCPF(this);" name="CPF" placeholder="CPF">
-                <label for="floatingInput">CPF</label>
-                <div class="invalid-feedback">Por favor, preencha este campo com um CPF válido.</div>
-              </div>
-            </div>
-          </div>
-          <div class="mb-3">
-            <div class="input-group">
-              <div class="form-floating mb-3">
-                <input type="tel" class="form-control" required id="floatingInput" maxlength="10"
-                  onkeyup="handleData(event); validateField(this); validarDataNascimento(this);" name="dataNascimento"
-                  placeholder="Data Nascimento">
-                <label for="floatingInput">Data Nascimento</label>
-                <div class="invalid-feedback">Por favor, preencha este campo com uma data válida.</div>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="tel" class="form-control" required id="floatingInput" maxlength="15"
-                  onkeyup="handlePhone(event); validateField(this);" name="celular" placeholder="Celular">
-                <label for="floatingInput">Celular</label>
-                <div class="invalid-feedback">Por favor, preencha este campo com um telefone válido.</div>
-              </div>
-            </div>
-          </div>
-          <div class="mb-3">
-            <div class="input-group form-floating mb-3">
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" required id="floatingInput" maxlength="50"
-                  onkeyup="handleOnlyLetters(event); validateField(this);" name="endrua" placeholder="Endereço Rua">
-                <label for="floatingInput">Rua</label>
-                <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="tel" class="form-control" required id="floatingInput" maxlength="10"
-                  onkeyup="handleOnlyNumbers(event); validateField(this);" name="endnumero"
-                  placeholder="Endereço Numero">
-                <label for="floatingInput">Número</label>
-                <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
-              </div>
-            </div>
-            <div class="input-group form-floating mb-3 ">
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" required id="floatingInput" maxlength="50"
-                  onkeyup="handleOnlyLetters(event); validateField(this);" name="endCidade"
-                  placeholder="Endereço Cidade">
-                <label for="floatingInput">Cidade</label>
-                <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="tel" class="form-control" required id="floatingInput" maxlength="9"
-                  onkeyup="handleCEP(event); validateField(this);" name="endCEP" placeholder="Endereço CEP">
-                <label for="floatingInput">CEP</label>
-                <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
-              </div>
-            </div>
-          </div>
-          <div class="mb-3">
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" required id="floatingInput"
-                onkeyup="handleOnlyLetters(event); validateField(this);" name="profissao"
-                placeholder="Responsável pela família">
-              <label for="floatingInput">Profissão do Responsável</label>
-              <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
-            </div>
-          </div>
-          <br>
-          <hr><br>
-          <div class=" form-floating mb-3">
-            <select class="form-select" required id="moradia" onchange="onSelectMoradia(); validateField(this);"
-              aria-label="Floating label select example">
-              <option selected value="0"></option>
-              <option value="1">Casa Própria</option>
-              <option value="2">Alugada</option>
-              <option value="3">Outros</option>
-            </select>
-            <label for="moradia">Situação da Moradia</label>
-            <br>
-            <div class="mb-3">
-              <div class="form-floating mb-3">
-                <input type="tel" disabled required class="form-control" id="moradiaAlugada" name="moradiaAlugada"
-                  onkeyup="handleOnlyNumbers(event); validateField(this);" placeholder="Moradia Alugada:"
-                  aria-label="Floating label select example">
-                <label for="moradiaAlugada">Valor do Aluguel</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="text" disabled required class="form-control  " id="moradiaOutros" name="moradiaOutros"
-                  onkeyup="handleOnlyLetters(event); validateField(this);" placeholder="moradiaOutros:"
-                  aria-label="Floating label select example">
-                <label for="moradiaOutros">Descrição</label>
-              </div>
-            </div>
-            <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
-          </div>
-
-          <br>
-          <hr>
-          <div class="container text-center">
-            <div class="row">
-              <div class="col align-self-start"></div>
-              <div class="col align-self-center"></div>
-              <div class="col align-self-end">
-                <button type="submit" class="btn btn-primary">PRÓXIMO</button>
-                <a href="cadastro_integrantes.html">PROXIMO</a>
-              </div>
-            </div>
-          </div>
-          <br>
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
-  <script src="bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
-  <script src="scripts.js"></script>
+<script src="bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="scripts.js" ></script>
 </body>
-
 </html>
