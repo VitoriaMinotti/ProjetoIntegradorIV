@@ -7,6 +7,18 @@
     android:background="@color/green"
     tools:context=".MainActivity" >
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/baseline_arrow_back_24">
+
+    </androidx.appcompat.widget.Toolbar>
+
+
     <Button
         android:id="@+id/buttonCadastrar"
         android:layout_width="210dp"
@@ -73,14 +85,27 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="298dp"
-        android:layout_height="297dp"
+        android:layout_width="225dp"
+        android:layout_height="135dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.087"
         app:srcCompat="@drawable/logo" />
+
+    <ImageButton
+        android:id="@+id/buttonSair"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+
+        android:backgroundTint="@color/tranparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        app:srcCompat="@drawable/baseline_login_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

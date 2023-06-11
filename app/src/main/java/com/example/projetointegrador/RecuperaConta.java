@@ -1,6 +1,7 @@
 package com.example.projetointegrador;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ public class RecuperaConta extends AppCompatActivity {
         binding = ActivityRecuperaContaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         mAuth = FirebaseAuth.getInstance();
-        setContentView(R.layout.activity_recupera_conta);
+        iniciaToolbar();
         binding.btnRecuperaConta.setOnClickListener(v-> validaDados());
     }
 
@@ -42,7 +43,14 @@ public class RecuperaConta extends AppCompatActivity {
             } else {
                 Toast.makeText(RecuperaConta.this, "Ocorreu um erro!", Toast.LENGTH_SHORT).show();
             }
+            binding.progressBar.setVisibility(View.GONE);
         });
+    }
+
+    private void iniciaToolbar(){
+        Toolbar toolbar = binding.toolbar;
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
     }
 
 

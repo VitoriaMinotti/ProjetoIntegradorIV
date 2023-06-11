@@ -21,7 +21,7 @@ public class Login extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         mAuth = FirebaseAuth.getInstance();
-        binding.buttonCadastrarLogin.setOnClickListener(view -> {
+        binding.txtCriarConta.setOnClickListener(view -> {
             startActivity(new Intent(this, cadastrarUsuario.class));
         });
         binding.txtRecupera.setOnClickListener(view -> startActivity(new Intent(this, RecuperaConta.class)));
