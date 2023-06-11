@@ -2,6 +2,7 @@ package com.example.projetointegrador;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ public class cadastrarUsuario extends AppCompatActivity {
         binding = ActivityCadastrarUsuarioBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         mAuth = FirebaseAuth.getInstance();
+        iniciaToolbar();
         binding.btnCadastro.setOnClickListener(v-> validaDados());
     }
 
@@ -53,6 +55,13 @@ public class cadastrarUsuario extends AppCompatActivity {
             }else {
                 Toast.makeText(this, "Ocorreu um erro! ", Toast.LENGTH_SHORT).show();
             }
+            binding.progressBar2.setVisibility(View.GONE);
         });
+    }
+
+    private void iniciaToolbar(){
+        Toolbar toolbar = binding.toolbar;
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
     }
 }

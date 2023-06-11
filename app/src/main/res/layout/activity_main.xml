@@ -7,6 +7,7 @@
     android:background="@color/green"
     tools:context=".MainActivity" >
 
+
     <Button
         android:id="@+id/buttonCadastrar"
         android:layout_width="210dp"
@@ -34,7 +35,6 @@
         android:layout_width="210dp"
         android:layout_height="140dp"
         android:backgroundTint="#FF7104"
-        android:onClick="consultar"
         android:text="Consultar"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -55,7 +55,6 @@
         android:layout_width="210dp"
         android:layout_height="140dp"
         android:backgroundTint="#FF7104"
-        android:onClick="relatorio"
         android:text="relatorio"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -73,14 +72,28 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="298dp"
-        android:layout_height="297dp"
+        android:layout_width="225dp"
+        android:layout_height="135dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.087"
         app:srcCompat="@drawable/logo" />
+
+    <ImageButton
+        android:id="@+id/buttonSair"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/tranparent"
+        android:rotationY="180"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.021"
+        app:srcCompat="@drawable/baseline_login_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
