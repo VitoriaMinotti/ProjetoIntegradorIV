@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrantes da Família</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/signature_pad/dist/signature-pad.css">
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad"></script>
+</head>
+<body style="background-color: #CBD7CD;">
+  <div class="container-fluid text-center">
+    <div class="row">
+      <div class="col-12 col-md-10 offset-md-3 mx-auto">
+        <br><br><h1>DATA DA ENTREGA</h1><br>
+        <form id="form-imagem" enctype="multipart/form-data">
+            <div class=" col-md-3 offset-md-3 mx-auto">
+                <div class="input-group">
+                    <div class="form-floating mb-3">
+                        <input type="date" class="form-control" required id="floatingInput" maxlength="10" onkeyup="handleData(event); validateField(this); validarDataNascimento(this);" name="dataNascimento"  placeholder="Data Nascimento">
+                        <label for="floatingInput">Data da Entrega</label> 
+                        <div class="invalid-feedback">Por favor, preencha este campo com uma data válida.</div>
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" required id="moradia" onchange="onSelectMoradia(); validateField(this);" aria-label="Floating label select example" >
+                        <option selected value="0"></option>
+                        <option value="1">João</option>
+                        <option value="2">Maria</option>
+                        <option value="3">Pé de Feijão</option>
+                    </select>
+                    <label for="moradia">Recebido por:</label>
+                </div>
+                <div class="container">
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" capture="camera" accept="image/*" id="imagem" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+                    </div>
+                </div>
+                
+            </div>
+            
+             
+          <div class="container text-center">
+              <div class="row">
+                  <div class="col align-self-start"></div>
+                  <div class="col align-self-center"></div>
+                  <div class="col align-self-end">
+                      <button type="submit" class="btn btn-success" id="imagem">SALVAR</button>
+                  </div>
+              </div>
+          </div>                             
+          <br>
+        </form>
+      </div>
+    </div>
+  </div>
+<script src="bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="scripts.js" ></script>
+
+</body>
+</html>
