@@ -40,9 +40,11 @@ public class cadastrarUsuario extends AppCompatActivity {
                 binding.progressBar2.setVisibility(View.VISIBLE);
                 criaContaFirebase(email, senha);
             }else {
+                binding.editPassword.setError("Informe uma senha!");
                 Toast.makeText(this, "Informe uma senha! ", Toast.LENGTH_SHORT).show();
             }
         }else {
+            binding.editEmail.setError("Informe seu e-mail!");
             Toast.makeText(this, "Informe seu e-mail! ", Toast.LENGTH_SHORT).show();
         }
     }
@@ -53,6 +55,7 @@ public class cadastrarUsuario extends AppCompatActivity {
                 finish();
                 startActivity(new Intent(this, conf_cria_conta.class));
             }else {
+                binding.btnCadastro.setError("!");
                 Toast.makeText(this, "Ocorreu um erro! ", Toast.LENGTH_SHORT).show();
             }
             binding.progressBar2.setVisibility(View.GONE);

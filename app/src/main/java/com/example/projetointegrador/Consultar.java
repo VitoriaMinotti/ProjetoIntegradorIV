@@ -12,30 +12,27 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.example.projetointegrador.databinding.ActivityCadastrarBinding;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import com.example.projetointegrador.databinding.ActivityConsultarBinding;
+
 import java.util.ArrayList;
 
-public class Cadastrar extends AppCompatActivity {
+public class Consultar extends AppCompatActivity {
 
-    private ActivityCadastrarBinding binding;
+    private ActivityConsultarBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityCadastrarBinding.inflate(getLayoutInflater());
+        binding = ActivityConsultarBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         iniciaToolbar();
         WebView web = (WebView) findViewById(R.id.Web);
-        Ponte ponte = new Ponte(this);
+        Consultar.Ponte ponte = new Ponte(this);
         web.addJavascriptInterface(new Ponte(this), "Android");
         web.getSettings().setJavaScriptEnabled(true);
         web.setWebChromeClient(new WebChromeClient());
         web.setWebViewClient(new WebViewClient());
-        web.loadUrl("file:///android_asset/index.html");
-
-
+        web.loadUrl("file:///android_asset/consulta.html");
     }
 
     private void iniciaToolbar(){
@@ -43,6 +40,7 @@ public class Cadastrar extends AppCompatActivity {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
     }
+
     class Ponte {
         Context context;
 
@@ -104,5 +102,4 @@ public class Cadastrar extends AppCompatActivity {
             }
         }
     }
-
 }

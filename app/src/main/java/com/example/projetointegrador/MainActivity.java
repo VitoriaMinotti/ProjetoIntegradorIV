@@ -35,5 +35,9 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, Cadastrar.class);
         startActivity(i);
     }
+    public void consultar(View v){
+        Intent i = new Intent(this, Consultar.class);
+        startActivity(i);
+    }
 
 }
