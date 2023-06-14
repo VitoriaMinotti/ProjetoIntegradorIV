@@ -13,69 +13,13 @@
     <div class="row">
       <div class="col-12 col-md-10 offset-md-3 mx-auto">
         <br><br>
-        <h1>INTEGRANTES DA FAMÍLIA</h1><br>
-        <form>
-          <div class="mb-3">
-            <div class="table-responsive d-none d-md-flex">
-              <table class="table table-striped table-hover ">
-                <thead>
-                  <tr>
-                    <th>NOME</th>
-                    <th>PARENTESCO</th>
-                    <th>IDADE</th>
-                    <th>PROFISSÃO</th>
-                    <th>POSSUI RENDA</th>
-                    <th>É APOSENTADO</th>
-                    <th>RECEBE AUXILIO BRASIL</th>
-                    <th>PcD</th>
-                    <th><button type="button" class="btn btn-info btn-sm" onclick="addRow()">+</button></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><input type="text" class="form-control" onkeyup="handleOnlyLetters(event); validateField(this);"
-                        name="nome[]" required></td>
-                    <td><input type="text" class="form-control" onkeyup="handleOnlyLetters(event); validateField(this);"
-                        name="parentesco[]" required></td>
-                    <td><input type="tel" class="form-control" onkeyup="handleOnlyNumbers(event); validateField(this);"
-                        name="idade[]" required></td>
-                    <td><input type="text" class="form-control" onkeyup="handleOnlyLetters(event); validateField(this);"
-                        name="profissao[]" required></td>
-
-                    <td>
-                      <select class="form-select" name="possui_renda[]">
-                        <option value="1">Sim</option>
-                        <option selected value="0">Não</option>
-                      </select>
-                    </td>
-                    <td>
-                      <select class="form-select" name="recebe_aposentadoria[]">
-                        <option value="1">Sim</option>
-                        <option selected value="0">Não</option>
-                      </select>
-                    </td>
-                    <td>
-                      <select class="form-select" name="recebe_auxilio[]">
-                        <option value="1">Sim</option>
-                        <option selected value="0">Não</option>
-                      </select>
-                    </td>
-                    <td>
-                      <select class="form-select" name="pcd[]">
-                        <option value="1">Sim</option>
-                        <option selected value="0">Não</option>
-                      </select>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        <form action="cadastro_confere.html" method="get">
             <div class="row d-sm-block d-md-none">
               <div>
                 <div class="col-md-2">
                   <div class="form-floating mb-3">
                     <input type="text" class="form-control" required id="floatingInput"
-                      onkeyup="handleOnlyLetters(event); validateField(this); " name="nome_integrante[]"
+                      onkeyup="handleOnlyLetters(event); validateField(this); " name="nome_integrante"
                       placeholder="Nome">
                     <label for="floatingInput">Nome</label>
                     <div class="invalid-feedback">Por favor, preencha este campo.</div>
@@ -84,7 +28,7 @@
                 <div class="col-md-2">
                   <div class="form-floating mb-3">
                     <input type="text" class="form-control" required id="floatingInput"
-                      onkeyup="handleOnlyLetters(event); validateField(this); " name="parentesco_integrante[]"
+                      onkeyup="handleOnlyLetters(event); validateField(this); " name="parentesco_integrante"
                       placeholder="Parentesco">
                     <label for="floatingInput">Parentesco</label>
                     <div class="invalid-feedback">Por favor, preencha este campo.</div>
@@ -93,7 +37,7 @@
                 <div class="col-md-2">
                   <div class="form-floating mb-3">
                     <input type="tel" class="form-control" onkeyup="handleOnlyNumbers(event); validateField(this);"
-                      name="idade[]" placeholder="Idade" required>
+                      name="idade_integrante" placeholder="Idade" required>
                     <label for="floatingInput">Idade</label>
                     <div class="invalid-feedback">Por favor, preencha este campo.</div>
                   </div>
@@ -101,14 +45,14 @@
                 <div class="col-md-2">
                   <div class="form-floating mb-3">
                     <input type="text" class="form-control" onkeyup="handleOnlyLetters(event); validateField(this);"
-                      name="profissao[]" placeholder="Profissão" required>
+                      name="profissao_integrante" placeholder="Profissão" required>
                     <label for="floatingInput">Profissão</label>
                     <div class="invalid-feedback">Por favor, preencha este campo.</div>
                   </div>
                 </div>
                 <div class="col-md-2">
                   <div class=" form-floating mb-3">
-                    <select class="form-select" required id="pcd[]">
+                    <select class="form-select" required id="pcd[]" name="pcd_integrante">
                       <option selected value="0"></option>
                       <option value="1">Sim</option>
                       <option value="2">Não</option>
@@ -119,7 +63,7 @@
                 </div>
                 <div class="col-md-2">
                   <div class=" form-floating mb-3">
-                    <select class="form-select" required id="renda[]">
+                    <select class="form-select" required id="renda[]" name="renda_integrante">
                       <option selected value="0"></option>
                       <option value="1">Sim</option>
                       <option value="2">Não</option>
@@ -128,47 +72,11 @@
                     <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
                   </div>
                 </div>
+                
                 <br>
                 <hr><br>
 
-                <div class=" form-floating mb-3">
-                  <select class="form-select" required id="aposentado" onchange="onSelectAposentado()">
-                    <option selected value="0"></option>
-                    <option value="1">Sim</option>
-                    <option value="2">Não</option>
-                  </select>
-                  <label for="aposentado">É aposentado?</label>
-                  <br>
-                  <div class="mb-3">
-                    <div class="form-floating mb-3">
-                      <input type="tel" disabled required class="form-control " id="valorAposentadoria"
-                        name="valorAposentadoria" onkeyup="handleOnlyNumbers(event); validateField(this);"
-                        placeholder="Valor da Aposentadoria:">
-                      <label for="valorAposentadoria">Valor da Aposentadoria</label>
-                    </div>
-                  </div>
-                  <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
-                </div>
-                <br>
-                <hr><br>
-
-                <div class=" form-floating mb-3">
-                  <select class="form-select" required id="auxilio" onchange="onSelectAuxilio()">
-                    <option selected value="0"></option>
-                    <option value="1">Sim</option>
-                    <option value="2">Não</option>
-                  </select>
-                  <label for="auxilio">Recebe Auxílio Brasil?</label>
-                  <br>
-                  <div class="mb-3">
-                    <div class="form-floating mb-3">
-                      <input type="tel" disabled required class="form-control " id="valorAuxilio" name="valorAuxilio"
-                        onkeyup="handleOnlyNumbers(event); validateField(this);" placeholder="Valor da Aposentadoria:">
-                      <label for="valorAuxilio">Valor do Auxílio</label>
-                    </div>
-                  </div>
-                  <div class="invalid-feedback">Por favor, preencha este campo com um valor válido.</div>
-                </div>
+                
                 <br>
                 <hr><br>
 
@@ -197,6 +105,19 @@
             </div>
           </div>
           <br>
+          <input type="hidden" name="nome_responsavel" value="{{nome_responsavel}}">
+          <input type="hidden" name="rg_responsavel" value="{{rg_responsavel}}">
+          <input type="hidden" name="cpf_responsavel" value="{{cpf_responsavel}}">
+          <input type="hidden" name="nascimento_responsavel" value="{{nascimentp_responsavel}}">
+          <input type="hidden" name="fone_responsavel" value="{{fone_responsavel}}">
+          <input type="hidden" name="profissao_responsavel" value="{{profissao_responsavel}}">
+          <input type="hidden" name="rua_moradia" value="{{rua_moradia}}">
+          <input type="hidden" name="numero_moradia" value="{{numero_moradia}}">
+          <input type="hidden" name="cidade_moradia" value="{{cidade_moradia}}">
+          <input type="hidden" name="cep_moradia" value="{{cep_moradia}}">
+          <input type="hidden" name="situacao_moradia" value="{{situacao_moradia}}">
+          <input type="hidden" name="aluguel_moradia" value="{{aluguel_moradia}}">
+          <input type="hidden" name="descricao_moradia" value="{{descricao_moradia}}">
         </form>
       </div>
     </div>
@@ -205,6 +126,115 @@
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
   <script src="scripts.js"></script>
+ 
+  <script>
+    // Obtém os parâmetros da URL
+    var urlParams = new URLSearchParams(window.location.search);
+    var nome_responsavel = urlParams.get('nome_responsavel');
+    var rg_responsavel = urlParams.get('rg_responsavel');
+    var cpf_responsavel = urlParams.get('cpf_responsavel');
+    var nascimento_responsavel = urlParams.get('nascimento_responsavel');
+    var fone_responsavel = urlParams.get('fone_responsavel');
+    var profissao_responsavel = urlParams.get('profissao_responsavel');
+    var rua_moradia = urlParams.get('rua_moradia');
+    var numero_moradia = urlParams.get('numero_moradia');
+    var cidade_moradia = urlParams.get('cidade_moradia');
+    var cep_moradia = urlParams.get('cep_moradia');
+    var situacao_moradia = urlParams.get('situacao_moradia');
+    var alguel_moradia = urlParams.get('alguel_moradia');
+    var descricao_moradia = urlParams.get('descricao_moradia');
+
+  
+    // Cria um novo formulário oculto
+    var form = document.createElement('form');
+    form.method = 'post';
+    form.action = 'cadastro_confere.html';
+  
+    // Adiciona os campos ocultos ao formulário
+    var nome_responsavelInput = document.createElement('input');
+    nome_responsavel.type = 'hidden';
+    nome_responsavel.name = 'nome_responsavel';
+    nome_responsavel.value = nome_responsavel;
+    form.appendChild(nome_responsavel);
+  
+    var rg_responsavelInput = document.createElement('input');
+    rg_responsavel.type = 'hidden';
+    rg_responsavel.name = 'rg_responsavel';
+    rg_responsavel.value = rg_responsavel;
+    form.appendChild(rg_responsavel);
+
+    var cpf_responsavelInput = document.createElement('input');
+    cpf_responsavel.type = 'hidden';
+    cpf_responsavel.name = 'cpf_responsavel';
+    cpf_responsavel.value = cpf_responsavel;
+    form.appendChild(cpf_responsavel);
+  
+    var nascimento_responsavelInput = document.createElement('input');
+    nascimento_responsavel.type = 'hidden';
+    nascimento_responsavel.name = 'nascimento_responsavel';
+    nascimento_responsavel.value = nascimento_responsavel;
+    form.appendChild(nascimento_responsavel);
+
+    var fone_responsavelInput = document.createElement('input');
+    fone_responsavel.type = 'hidden';
+    fone_responsavel.name = 'fone_responsavel';
+    fone_responsavel.value = fone_responsavel;
+    form.appendChild(fone_responsavel);
+
+    var profissao_responsavelInput = document.createElement('input');
+    profissao_responsavel.type = 'hidden';
+    profissao_responsavel.name = 'profissao_responsavel';
+    profissao_responsavel.value = profissao_responsavel;
+    form.appendChild(profissao_responsavel);
+
+    var rua_moradiaInput = document.createElement('input');
+    rua_moradia.type = 'hidden';
+    rua_moradia.name = 'rua_moradia';
+    rua_moradia.value = rua_moradia;
+    form.appendChild(rua_moradia);
+
+    var numero_moradiaInput = document.createElement('input');
+    numero_moradia.type = 'hidden';
+    numero_moradia.name = 'numero_moradia';
+    numero_moradia.value = numero_moradia;
+    form.appendChild(numero_moradia);
+
+    var cidade_moradiaInput = document.createElement('input');
+    cidade_moradia.type = 'hidden';
+    cidade_moradia.name = 'cidade_moradia';
+    cidade_moradia.value = cidade_moradia;
+    form.appendChild(cidade_moradia);
+
+    var cep_moradiaInput = document.createElement('input');
+    cep_moradia.type = 'hidden';
+    cep_moradia.name = 'cep_moradia';
+    cep_moradia.value = cep_moradia;
+    form.appendChild(cep_moradia);
+
+    var situacao_moradiaInput = document.createElement('input');
+    situacao_moradia.type = 'hidden';
+    situacao_moradia.name = 'situacao_moradia';
+    situacao_moradia.value = situacao_moradia;
+    form.appendChild(situacao_moradia);
+
+    var alguel_moradiaInput = document.createElement('input');
+    alguel_moradia.type = 'hidden';
+    alguel_moradia.name = 'alguel_moradia';
+    alguel_moradia.value = alguel_moradia;
+    form.appendChild(alguel_moradia);
+
+    var descricao_moradiaInput = document.createElement('input');
+    descricao_moradia.type = 'hidden';
+    descricao_moradia.name = 'descricao_moradia';
+    descricao_moradia.value = descricao_moradia;
+    form.appendChild(descricao_moradia);
+
+
+    // Adiciona o formulário ao corpo do documento e envia automaticamente
+    document.body.appendChild(form);
+    form.submit();
+
+  </script>
 </body>
 
 </html>
