@@ -5,17 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
 
     <Button
         android:id="@+id/buttonCadastrar"
         android:layout_width="210dp"
         android:layout_height="140dp"
-        android:backgroundTint="@color/orange"
+        android:layout_marginTop="236dp"
+        android:backgroundTint="@color/green2"
         android:onClick="cadastrar"
-        android:text="Cadastrar"
         android:radius="25dp"
+        android:text="Cadastrar"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -23,18 +24,17 @@
         app:iconGravity="textTop"
         app:iconSize="80dp"
         app:iconTint="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.424" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <Button
         android:id="@+id/buttonConsultar"
         android:layout_width="210dp"
         android:layout_height="140dp"
-        android:backgroundTint="#FF7104"
+        android:backgroundTint="@color/green2"
+        android:onClick="consultar"
         android:text="Consultar"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -45,30 +45,9 @@
         app:iconTint="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.69" />
-
-    <Button
-        android:id="@+id/buttonRelatórios"
-        android:layout_width="210dp"
-        android:layout_height="140dp"
-        android:backgroundTint="#FF7104"
-        android:text="relatorio"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:icon="@drawable/relatorio"
-        app:iconGravity="textTop"
-        app:iconSize="80dp"
-        app:iconTint="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.956" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonCadastrar" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -76,7 +55,8 @@
         android:layout_height="135dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonSair"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.087"

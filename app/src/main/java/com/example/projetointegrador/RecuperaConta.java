@@ -32,6 +32,7 @@ public class RecuperaConta extends AppCompatActivity {
         if (!email.isEmpty()) {
             recuperaContaFirebase(email);
         }else {
+            binding.editEmail.setError("Informe seu e-mail!");
             Toast.makeText(this, "Informe seu e-mail! ", Toast.LENGTH_SHORT).show();
         }
     }
@@ -41,6 +42,7 @@ public class RecuperaConta extends AppCompatActivity {
             if (task.isSuccessful()) {
                 Toast.makeText(RecuperaConta.this, "Verifique seu E-mail!", Toast.LENGTH_SHORT).show();
             } else {
+                binding.btnRecuperaConta.setError("!");
                 Toast.makeText(RecuperaConta.this, "Ocorreu um erro!", Toast.LENGTH_SHORT).show();
             }
             binding.progressBar.setVisibility(View.GONE);
