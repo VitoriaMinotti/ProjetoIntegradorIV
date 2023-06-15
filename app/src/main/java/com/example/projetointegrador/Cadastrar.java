@@ -11,10 +11,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.example.projetointegrador.databinding.ActivityCadastrarBinding;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Cadastrar extends AppCompatActivity {
@@ -33,16 +31,18 @@ public class Cadastrar extends AppCompatActivity {
         web.getSettings().setJavaScriptEnabled(true);
         web.setWebChromeClient(new WebChromeClient());
         web.setWebViewClient(new WebViewClient());
-        web.loadUrl("file:///android_asset/index.html");
+
+        web.loadUrl("file:///android_asset/cadastro_confere.html");
 
 
     }
 
-    private void iniciaToolbar(){
+    private void iniciaToolbar() {
         Toolbar toolbar = binding.toolbar;
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
     }
+
     class Ponte {
         Context context;
 
@@ -50,59 +50,29 @@ public class Cadastrar extends AppCompatActivity {
             this.context = context;
         }
 
-        @JavascriptInterface
-        public String consultarResponsaveis() {
-            DatabaseHelper banco = new DatabaseHelper(context);
-            ArrayList<String> listaResponsaveis = banco.consultaResponsaveis();
-
-            String mensagem = "";
-            if (listaResponsaveis != null) {
-                for (int i = 0; i < listaResponsaveis.size(); i++) {
-                    mensagem += listaResponsaveis.get(i);
-                }
-            } else {
-                mensagem = "Não há dados de responsáveis!";
-            }
-            return mensagem;
-        }
 
         @JavascriptInterface
-        public String consultarMoradias() {
+        public void inserirDados(String nomeResponsavel, String rgResponsavel, String cpfResponsavel,
+                                 String nascimentoResponsavel, String foneResponsavel, String rendaResponsavel,
+                                 String profissaoResponsavel, String aposentadoResponsavel, String dependenteResponsavel,
+                                 String ruaMoradia, String numeroMoradia, String cidadeMoradia, String cepMoradia) {
             DatabaseHelper banco = new DatabaseHelper(context);
-            ArrayList<String> listaMoradias = banco.consultaMoradias();
 
-            String mensagem = "";
-            if (listaMoradias != null) {
-                for (int i = 0; i < listaMoradias.size(); i++) {
-                    mensagem += listaMoradias.get(i);
-                }
-            } else {
-                mensagem = "Não há dados de moradias!";
-            }
-            return mensagem;
-        }
+            try {
+                // Tente inserir os dados no banco de dados
+                banco.inserirResponsavel(nomeResponsavel, rgResponsavel, cpfResponsavel, nascimentoResponsavel, foneResponsavel, rendaResponsavel, profissaoResponsavel, aposentadoResponsavel, dependenteResponsavel);
+                banco.inserirMoradia(ruaMoradia, numeroMoradia, cidadeMoradia, cepMoradia);
 
-        @JavascriptInterface
-        public void inserirResponsavel(String nome, String rg, String cpf, String nascimento, String telefone, double renda, String profissao, String aposentado, int dependente) {
-            DatabaseHelper banco = new DatabaseHelper(context);
-            long id = banco.insereResponsavel(nome, rg, cpf, nascimento, telefone, renda, profissao, aposentado, dependente);
-            if (id > 0) {
-                Toast.makeText(context, "Responsável inserido com sucesso!", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(context, "Erro na inserção do responsável!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Dados enviados com sucesso", Toast.LENGTH_SHORT).show();
+
+                // Redireciona para a atividade anterior
+                finish();
+            } catch (Exception e) {
+                // Captura a exceção e exibe uma mensagem de erro
+                Toast.makeText(context, "Erro ao enviar os dados: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
 
-        @JavascriptInterface
-        public void inserirMoradia(String rua, int numero, String cidade, String cep) {
-            DatabaseHelper banco = new DatabaseHelper(context);
-            long id = banco.insereMoradia(rua, numero, cidade, cep);
-            if (id > 0) {
-                Toast.makeText(context, "Moradia inserida com sucesso!", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(context, "Erro na inserção da moradia!", Toast.LENGTH_LONG).show();
-            }
-        }
     }
-
 }
+

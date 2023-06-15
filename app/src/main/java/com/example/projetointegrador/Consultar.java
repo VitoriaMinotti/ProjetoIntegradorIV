@@ -19,6 +19,7 @@ import java.util.ArrayList;
 public class Consultar extends AppCompatActivity {
 
     private ActivityConsultarBinding binding;
+    private WebView web;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +27,16 @@ public class Consultar extends AppCompatActivity {
         binding = ActivityConsultarBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         iniciaToolbar();
-        WebView web = (WebView) findViewById(R.id.Web);
-        Consultar.Ponte ponte = new Ponte(this);
-        web.addJavascriptInterface(new Ponte(this), "Android");
+
+        web = binding.Web;
         web.getSettings().setJavaScriptEnabled(true);
         web.setWebChromeClient(new WebChromeClient());
         web.setWebViewClient(new WebViewClient());
+
+        // Adicione a interface JavaScript necessária para a comunicação com o código Java
+        web.addJavascriptInterface(new Ponte2(), "Android");
+        web.loadUrl("javascript:consultarResponsaveis('nome_do_responsavel')");
+
         web.loadUrl("file:///android_asset/consulta.html");
     }
 
@@ -41,17 +46,12 @@ public class Consultar extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-    class Ponte {
-        Context context;
-
-        public Ponte(Context context) {
-            this.context = context;
-        }
+    class Ponte2 {
 
         @JavascriptInterface
-        public String consultarResponsaveis() {
-            DatabaseHelper banco = new DatabaseHelper(context);
-            ArrayList<String> listaResponsaveis = banco.consultaResponsaveis();
+        public String consultarResponsaveis(String nomeResponsavel) {
+            DatabaseHelper banco = new DatabaseHelper(getApplicationContext());
+            ArrayList<String> listaResponsaveis = banco.consultarResponsaveis(nomeResponsavel);
 
             String mensagem = "";
             if (listaResponsaveis != null) {
@@ -64,10 +64,11 @@ public class Consultar extends AppCompatActivity {
             return mensagem;
         }
 
+
         @JavascriptInterface
         public String consultarMoradias() {
-            DatabaseHelper banco = new DatabaseHelper(context);
-            ArrayList<String> listaMoradias = banco.consultaMoradias();
+            DatabaseHelper banco = new DatabaseHelper(getApplicationContext());
+            ArrayList<String> listaMoradias = banco.consultarMoradias();
 
             String mensagem = "";
             if (listaMoradias != null) {
@@ -80,26 +81,5 @@ public class Consultar extends AppCompatActivity {
             return mensagem;
         }
 
-        @JavascriptInterface
-        public void inserirResponsavel(String nome, String rg, String cpf, String nascimento, String telefone, double renda, String profissao, String aposentado, int dependente) {
-            DatabaseHelper banco = new DatabaseHelper(context);
-            long id = banco.insereResponsavel(nome, rg, cpf, nascimento, telefone, renda, profissao, aposentado, dependente);
-            if (id > 0) {
-                Toast.makeText(context, "Responsável inserido com sucesso!", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(context, "Erro na inserção do responsável!", Toast.LENGTH_LONG).show();
-            }
-        }
-
-        @JavascriptInterface
-        public void inserirMoradia(String rua, int numero, String cidade, String cep) {
-            DatabaseHelper banco = new DatabaseHelper(context);
-            long id = banco.insereMoradia(rua, numero, cidade, cep);
-            if (id > 0) {
-                Toast.makeText(context, "Moradia inserida com sucesso!", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(context, "Erro na inserção da moradia!", Toast.LENGTH_LONG).show();
-            }
-        }
     }
 }

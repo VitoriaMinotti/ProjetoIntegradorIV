@@ -16,7 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, "pilar_social", null, 1);
     }
 
-    public long insereResponsavel(String nome, String rg, String cpf, String nascimento, String telefone, double renda, String profissao, String aposentado, int dependente) {
+    public long inserirResponsavel(String nome, String rg, String cpf, String nascimento, String telefone, String renda, String profissao, String aposentado, String dependente) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("nome_responsavel", nome);
@@ -30,16 +30,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("dependente_responsavel", dependente);
 
         long id = db.insert("responsavel", null, values);
-        db.close();
+
         return id;
     }
 
-    public ArrayList<String> consultaResponsaveis() {
+    public ArrayList<String> consultarResponsaveis(String nomeResponsavel) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT * FROM responsavel";
+        String sql = "SELECT * FROM responsavel WHERE nome_responsavel LIKE ?";
         ArrayList<String> resultado = null;
 
-        Cursor cursor = db.rawQuery(sql, null);
+        Cursor cursor = db.rawQuery(sql, new String[]{"%" + nomeResponsavel + "%"});
         if (cursor.moveToFirst()) {
             resultado = new ArrayList<String>();
             do {
@@ -48,22 +48,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String cpf = cursor.getString(3);
                 String nascimento = cursor.getString(4);
                 String telefone = cursor.getString(5);
-                double renda = cursor.getDouble(6);
+                String renda = cursor.getString(6);
                 String profissao = cursor.getString(7);
                 String aposentado = cursor.getString(8);
-                int dependente = cursor.getInt(9);
+                String dependente = cursor.getString(9);
 
-                resultado.add("Nome: " + nome + "\nRG: " + rg + "\nCPF: " + cpf + "\nNascimento: " + nascimento +
-                        "\nTelefone: " + telefone + "\nRenda: " + renda + "\nProfissão: " + profissao +
-                        "\nAposentado: " + aposentado + "\nDependente: " + dependente);
+                resultado.add("Nome: " + nome + "\n RG: " + rg + "\n CPF: " + cpf + "\n Nascimento: " + nascimento +
+                        "\n Telefone: " + telefone + "\n Renda: " + renda + "\n Profissão: " + profissao +
+                        "\n Aposentado: " + aposentado + "\n Dependente: " + dependente);
             } while (cursor.moveToNext());
         }
         cursor.close();
-        db.close();
+
         return resultado;
     }
 
-    public long insereMoradia(String rua, int numero, String cidade, String cep) {
+    public long inserirMoradia(String rua, String numero, String cidade, String cep) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("rua_moradia", rua);
@@ -72,11 +72,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("cep_moradia", cep);
 
         long id = db.insert("moradia", null, values);
-        db.close();
+
         return id;
     }
 
-    public ArrayList<String> consultaMoradias() {
+    public ArrayList<String> consultarMoradias() {
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "SELECT * FROM moradia";
         ArrayList<String> resultado = null;
@@ -86,15 +86,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             resultado = new ArrayList<String>();
             do {
                 String rua = cursor.getString(1);
-                int numero = cursor.getInt(2);
+                String numero = cursor.getString(2);
                 String cidade = cursor.getString(3);
                 String cep = cursor.getString(4);
 
-                resultado.add("Rua: " + rua + "\nNúmero: " + numero + "\nCidade: " + cidade + "\nCEP: " + cep);
+                resultado.add("Rua: " + rua + "\n Número: " + numero + "\n Cidade: " + cidade + "\n CEP: " + cep);
             } while (cursor.moveToNext());
         }
         cursor.close();
-        db.close();
+
         return resultado;
     }
 
@@ -102,8 +102,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // Crie as tabelas necessárias no método onCreate
-        db.execSQL("CREATE TABLE moradia (id INTEGER PRIMARY KEY, rua_moradia TEXT, numero_moradia INTEGER, cidade_moradia TEXT, cep_moradia TEXT)");
-        db.execSQL("CREATE TABLE responsavel (id INTEGER PRIMARY KEY, nome_responsavel TEXT, rg_responsavel TEXT, cpf_responsavel TEXT, nascimento_responsavel TEXT, fone_responsavel TEXT, renda_responsavel REAL, profissao_responsavel TEXT, aposentado_responsavel TEXT, dependente_responsavel INTEGER)");
+        db.execSQL("CREATE TABLE moradia (id INTEGER PRIMARY KEY, rua_moradia TEXT, numero_moradia TEXT, cidade_moradia TEXT, cep_moradia TEXT)");
+        db.execSQL("CREATE TABLE responsavel (id INTEGER PRIMARY KEY, nome_responsavel TEXT, rg_responsavel TEXT, cpf_responsavel TEXT, nascimento_responsavel TEXT, fone_responsavel TEXT, renda_responsavel TEXT, profissao_responsavel TEXT, aposentado_responsavel TEXT, dependente_responsavel TEXT)");
     }
 
     @Override
@@ -113,5 +113,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS responsavel");
         onCreate(db);
     }
+
+
 }
 

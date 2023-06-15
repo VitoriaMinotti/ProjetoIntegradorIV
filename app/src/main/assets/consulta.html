@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Família</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body style="background-color: #CBD7CD;">
+<div class="container-fluid text-center">
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3 mx-auto">
+            <br>
+            <form id="consultaForm">
+                <div class="mb-3">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" required id="nome_responsavel"
+                               onkeyup="handleOnlyLetters(event); validateField(this);" name="nome_responsavel"
+                               placeholder="Responsável pela família">
+                        <label for="nome_responsavel">Responsável pela família</label>
+                        <div class="invalid-feedback">Por favor, preencha este campo.</div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Consultar</button>
+            </form>
+            <div  class="mt-4">
+                <div id="resultadoConsulta" class="card">
+                    <div class="card-header"></div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" id="nomeResponsavelItem"></li>
+                        <li class="list-group-item" id="rgResponsavelItem"></li>
+                        <li class="list-group-item" id="cpfResponsavelItem"></li>
+                        <li class="list-group-item" id="nascimentoResponsavelItem"></li>
+                        <li class="list-group-item" id="foneResponsavelItem"></li>
+                        <li class="list-group-item" id="rendaResponsavelItem"></li>
+                        <li class="list-group-item" id="profissaoResponsavelItem"></li>
+                        <li class="list-group-item" id="aposentadoResponsavelItem"></li>
+                        <li class="list-group-item" id="dependenteResponsavelItem"></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    // Adicione a interface JavaScript para a comunicação com o código Java
+    window.ponte = window.Android || {};
+
+        document.getElementById('consultaForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+
+        var nomeResponsavel = document.getElementById('nome_responsavel').value;
+
+        // Chame o método de consulta adequado da classe Ponte para buscar os dados no banco de dados
+        var resultadoConsulta = window.ponte.consultarResponsaveis(nomeResponsavel);
+
+        // Manipule os dados retornados da consulta
+        var resultadoConsultaDiv = document.getElementById('resultadoConsulta');
+        resultadoConsultaDiv.innerHTML = resultadoConsulta;
+    });
+
+    // Novo script para exibir os resultados da pesquisa de forma estilizada
+    function exibirResultados(resultados) {
+    var nomeResponsavelItem = document.getElementById('nomeResponsavelItem');
+    var rgResponsavelItem = document.getElementById('rgResponsavelItem');
+    var cpfResponsavelItem = document.getElementById('cpfResponsavelItem');
+    var nascimentoResponsavelItem = document.getElementById('nascimentoResponsavelItem');
+    var foneResponsavelItem = document.getElementById('foneResponsavelItem');
+    var rendaResponsavelItem = document.getElementById('rendaResponsavelItem');
+    var profissaoResponsavelItem = document.getElementById('profissaoResponsavelItem');
+    var aposentadoResponsavelItem = document.getElementById('aposentadoResponsavelItem');
+    var dependenteResponsavelItem = document.getElementById('dependenteResponsavelItem');
+
+    // Limpa os valores anteriores
+    nomeResponsavelItem.textContent = "";
+    rgResponsavelItem.textContent = "";
+    cpfResponsavelItem.textContent = "";
+    nascimentoResponsavelItem.textContent = "";
+    foneResponsavelItem.textContent = "";
+    rendaResponsavelItem.textContent = "";
+    profissaoResponsavelItem.textContent = "";
+    aposentadoResponsavelItem.textContent = "";
+    dependenteResponsavelItem.textContent = "";
+
+    resultados.forEach(function (responsavel) {
+        nomeResponsavelItem.textContent += responsavel.nome + "\n";
+        rgResponsavelItem.textContent += responsavel.rg + "\n";
+        cpfResponsavelItem.textContent += responsavel.cpf + "\n";
+        nascimentoResponsavelItem.textContent += responsavel.nascimento + "\n";
+        foneResponsavelItem.textContent += responsavel.fone + "\n";
+        rendaResponsavelItem.textContent += responsavel.renda + "\n";
+        profissaoResponsavelItem.textContent += responsavel.profissao + "\n";
+        aposentadoResponsavelItem.textContent += responsavel.aposentado + "\n";
+        dependenteResponsavelItem.textContent += responsavel.dependente + "\n";
+    });
+}
+</script>
+
+
+<script src="bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="scripts.js"></script>
+</body>
+</html>
