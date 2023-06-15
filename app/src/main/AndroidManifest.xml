@@ -19,24 +19,20 @@
         android:theme="@style/Theme.ProjetoIntegrador"
         tools:targetApi="31">
         <activity
-            android:name=".Consultar"
-            android:exported="false"
-            android:parentActivityName=".MainActivity"/>
-        <activity
             android:name=".RecuperaConta"
             android:exported="false"
-            android:parentActivityName=".Login" />
+            android:parentActivityName=".Login"/>
         <activity
             android:name=".conf_cria_conta"
             android:exported="false" />
         <activity
             android:name=".cadastrarUsuario"
             android:exported="false"
-            android:parentActivityName=".Login" />
+            android:parentActivityName=".Login"/>
         <activity
             android:name=".Cadastrar"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".Login"/>
         <activity
             android:name=".MainActivity"
             android:exported="false" />
@@ -45,7 +41,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
