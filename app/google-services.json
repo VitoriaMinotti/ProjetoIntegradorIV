@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "783960841176",
-    "project_id": "pilarsocial-60e00",
-    "storage_bucket": "pilarsocial-60e00.appspot.com"
+    "project_number": "663741903495",
+    "project_id": "pilarsocial-1759e",
+    "storage_bucket": "pilarsocial-1759e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:783960841176:android:e9cf1cecaf2ab7770730ad",
+        "mobilesdk_app_id": "1:663741903495:android:d722eb4120e01115533e22",
         "android_client_info": {
           "package_name": "com.example.projetointegrador"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBZRqBQPT5E-vsi1MxlNimEEy-anAuyxPw"
+          "current_key": "AIzaSyBEo7Tz7i6QycXkw4Uiad5d91e36K8DT4E"
         }
       ],
       "services": {
