@@ -1,44 +1,26 @@
 {
   "project_info": {
-    "project_number": "298433474350",
-    "project_id": "pilarsocial-87beb",
-    "storage_bucket": "pilarsocial-87beb.appspot.com"
+    "project_number": "783960841176",
+    "project_id": "pilarsocial-60e00",
+    "storage_bucket": "pilarsocial-60e00.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:298433474350:android:63b7ff72106d7e174514bf",
+        "mobilesdk_app_id": "1:783960841176:android:e9cf1cecaf2ab7770730ad",
         "android_client_info": {
           "package_name": "com.example.projetointegrador"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "298433474350-5ctop8bfohk4b9rmtk12c4mree4cvd38.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.projetointegrador",
-            "certificate_hash": "fa0c40c984d8d4c37504208903bc405395324eb4"
-          }
-        },
-        {
-          "client_id": "298433474350-8a32lgna5iahe6llg9cttj61cpiclut4.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB6j3rp2juhGZZxNDYX598Hk_1ISl93Hns"
+          "current_key": "AIzaSyBZRqBQPT5E-vsi1MxlNimEEy-anAuyxPw"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "298433474350-8a32lgna5iahe6llg9cttj61cpiclut4.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
