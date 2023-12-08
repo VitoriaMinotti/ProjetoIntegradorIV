@@ -1,3 +1,4 @@
+
 package com.example.projetointegrador;
 
 import android.content.ContentValues;
@@ -76,28 +77,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return id;
     }
 
-    public ArrayList<String> consultarMoradias() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT * FROM moradia";
-        ArrayList<String> resultado = null;
-
-        Cursor cursor = db.rawQuery(sql, null);
-        if (cursor.moveToFirst()) {
-            resultado = new ArrayList<String>();
-            do {
-                String rua = cursor.getString(1);
-                String numero = cursor.getString(2);
-                String cidade = cursor.getString(3);
-                String cep = cursor.getString(4);
-
-                resultado.add("Rua: " + rua + "\n Número: " + numero + "\n Cidade: " + cidade + "\n CEP: " + cep);
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-
-        return resultado;
-    }
-
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -116,4 +95,3 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 }
-

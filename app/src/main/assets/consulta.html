@@ -6,7 +6,34 @@
     <title>Consultar Família</title>
     <link rel="stylesheet" href="bootstrap.min.css">
 </head>
+<style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .img-fluid {
+            max-width: 50%;
+            height: auto;
+        }
+    </style>
+
 <body style="background-color: #CBD7CD;">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 image-container">
+            <img src="logosf.png" class="rounded img-fluid" alt="Logo">
+        </div>
+    </div>
+</div>
 <div class="container-fluid text-center">
     <div class="row">
         <div class="col-12 col-md-6 offset-md-3 mx-auto">
@@ -14,92 +41,92 @@
             <form id="consultaForm">
                 <div class="mb-3">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" required id="nome_responsavel"
-                               onkeyup="handleOnlyLetters(event); validateField(this);" name="nome_responsavel"
+                        <input type="text" class="form-control" id="nome_responsavel"
+                               onkeyup="validateField(this);" name="nome_responsavel"
                                placeholder="Responsável pela família">
-                        <label for="nome_responsavel">Responsável pela família</label>
+                        <label for="nome_responsavel">Nome do Responsável</label>
                         <div class="invalid-feedback">Por favor, preencha este campo.</div>
+
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success">CONSULTA</button>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Consultar</button>
+
             </form>
             <div  class="mt-4">
                 <div id="resultadoConsulta" class="card">
                     <div class="card-header"></div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" id="nomeResponsavelItem"></li>
-                        <li class="list-group-item" id="rgResponsavelItem"></li>
-                        <li class="list-group-item" id="cpfResponsavelItem"></li>
-                        <li class="list-group-item" id="nascimentoResponsavelItem"></li>
-                        <li class="list-group-item" id="foneResponsavelItem"></li>
-                        <li class="list-group-item" id="rendaResponsavelItem"></li>
-                        <li class="list-group-item" id="profissaoResponsavelItem"></li>
-                        <li class="list-group-item" id="aposentadoResponsavelItem"></li>
-                        <li class="list-group-item" id="dependenteResponsavelItem"></li>
+                        <li class=" mt-1 list-group-item" id="nomeResponsavelItem"></li>
+                        <!-- Adicione outros itens conforme necessário -->
                     </ul>
-                </div>
 
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 
-
 <script>
+    var script = document.createElement('script');
+    script.src = 'pdf-lib.min.js';
+    script.onload = function() {
+        // Chamando a função gerarPDF após a biblioteca ter sido carregada
+        gerarPDF();
+    };
+    document.head.appendChild(script);
+
+
     // Adicione a interface JavaScript para a comunicação com o código Java
     window.ponte = window.Android || {};
 
-        document.getElementById('consultaForm').addEventListener('submit', function (event) {
+      document.getElementById('consultaForm').addEventListener('submit', async function (event) {
         event.preventDefault(); // Impede o envio padrão do formulário
 
         var nomeResponsavel = document.getElementById('nome_responsavel').value;
 
         // Chame o método de consulta adequado da classe Ponte para buscar os dados no banco de dados
         var resultadoConsulta = window.ponte.consultarResponsaveis(nomeResponsavel);
+        console.log(typeof resultadoConsulta); // Adicionando um log para verificar o tipo de dado retornado
 
         // Manipule os dados retornados da consulta
         var resultadoConsultaDiv = document.getElementById('resultadoConsulta');
-        resultadoConsultaDiv.innerHTML = resultadoConsulta;
+        resultadoConsultaDiv.innerHTML = ""; // Limpa o conteúdo anterior
+
+        if (typeof resultadoConsulta === 'string' && resultadoConsulta.trim() !== '') {
+            var responsaveis = resultadoConsulta.split('\n\n'); // Supondo que os responsáveis estejam separados por duas quebras de linha
+
+            responsaveis.forEach(function (responsavelInfo) {
+                var responsavelDiv = document.createElement('div');
+                responsavelDiv.classList.add('card', 'mb-3');
+
+                var responsavelHeader = document.createElement('div');
+                responsavelHeader.classList.add('card-header');
+                responsavelHeader.textContent = 'Informações do Responsável';
+                responsavelDiv.appendChild(responsavelHeader);
+
+                var responsavelList = document.createElement('ul');
+                responsavelList.classList.add('list-group', 'list-group-flush');
+
+                responsavelInfo.split('\n').forEach(function (info) {
+                    var infoItem = document.createElement('li');
+                    infoItem.classList.add('list-group-item');
+                    infoItem.textContent = info;
+                    responsavelList.appendChild(infoItem);
+                });
+
+                responsavelDiv.appendChild(responsavelList);
+                resultadoConsultaDiv.appendChild(responsavelDiv);
+            });
+        } else {
+            resultadoConsultaDiv.innerHTML = "<div class='alert alert-warning mt-4'>Nenhum responsável encontrado.</div>";
+        }
     });
 
-    // Novo script para exibir os resultados da pesquisa de forma estilizada
-    function exibirResultados(resultados) {
-    var nomeResponsavelItem = document.getElementById('nomeResponsavelItem');
-    var rgResponsavelItem = document.getElementById('rgResponsavelItem');
-    var cpfResponsavelItem = document.getElementById('cpfResponsavelItem');
-    var nascimentoResponsavelItem = document.getElementById('nascimentoResponsavelItem');
-    var foneResponsavelItem = document.getElementById('foneResponsavelItem');
-    var rendaResponsavelItem = document.getElementById('rendaResponsavelItem');
-    var profissaoResponsavelItem = document.getElementById('profissaoResponsavelItem');
-    var aposentadoResponsavelItem = document.getElementById('aposentadoResponsavelItem');
-    var dependenteResponsavelItem = document.getElementById('dependenteResponsavelItem');
 
-    // Limpa os valores anteriores
-    nomeResponsavelItem.textContent = "";
-    rgResponsavelItem.textContent = "";
-    cpfResponsavelItem.textContent = "";
-    nascimentoResponsavelItem.textContent = "";
-    foneResponsavelItem.textContent = "";
-    rendaResponsavelItem.textContent = "";
-    profissaoResponsavelItem.textContent = "";
-    aposentadoResponsavelItem.textContent = "";
-    dependenteResponsavelItem.textContent = "";
-
-    resultados.forEach(function (responsavel) {
-        nomeResponsavelItem.textContent += responsavel.nome + "\n";
-        rgResponsavelItem.textContent += responsavel.rg + "\n";
-        cpfResponsavelItem.textContent += responsavel.cpf + "\n";
-        nascimentoResponsavelItem.textContent += responsavel.nascimento + "\n";
-        foneResponsavelItem.textContent += responsavel.fone + "\n";
-        rendaResponsavelItem.textContent += responsavel.renda + "\n";
-        profissaoResponsavelItem.textContent += responsavel.profissao + "\n";
-        aposentadoResponsavelItem.textContent += responsavel.aposentado + "\n";
-        dependenteResponsavelItem.textContent += responsavel.dependente + "\n";
-    });
-}
 </script>
-
 
 <script src="bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script src="scripts.js"></script>
